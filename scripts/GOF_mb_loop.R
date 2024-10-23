@@ -87,7 +87,7 @@ countdata <- countdata %>% select(year, Point, Count, all_of(SPECIES)) %>% # sel
 ##### 4: start loop over all species ####
 
 # set number of simulations for goodness of fit test and create input objects
-nsim <- 1000 # number of simulations should be very high (>1000)
+nsim <- 3 # number of simulations should be very high (>1000)
 gof <- data.frame()
 gof_objects <- list()
 
@@ -124,7 +124,7 @@ for(i in 1:length(SPECIES)){
   # save results in data.frame and RDS
   result <- data.frame(species = SPECIES[i], c_hat = c_hat , p_value = p_value)
   gof <- rbind(gof, result)
-  gof_objects[[i]] <- pb
+  gof_objects[[i]] <- mb
   names(gof_objects)[i] <- SPECIES[i]
   saveRDS(mb, file = sprintf('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/GOF/%s_gof_mb.rds', SPECIES)) # save mb gof as RDS
 }
