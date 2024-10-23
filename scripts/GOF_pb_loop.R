@@ -154,19 +154,34 @@ for(i in 1:length(SPECIES)){
   gof_list[[i]] <- readRDS(file = sprintf('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/GOF/%s_gof_pb.rds', SPECIES[i]))
   names(gof_list)[i] <- SPECIES[i]
   c_hat <- gof_list[[i]]@t0[2]/mean(gof_list[[i]]@t.star[,2]) # calculate c-hat
-  gof_df[i,] <- c(SPECIES[i], gof_list[[i]]@t0[1], NA, gof_list[[i]]@t0[2], NA, gof_list[[i]]@t0[3], NA, c_hat)
+  gof_df[i,] <- c(SPECIES[i], as.numeric(gof_list[[i]]@t0[1]), NA, as.numeric(gof_list[[i]]@t0[2]), NA, as.numeric(gof_list[[i]]@t0[3]), NA, as.numeric(c_hat))
 }
 
 
-# manually add p-value 
+# manually add p-value, format results and export
 gof_list$MTOR
 gof_list$FOTH
 gof_list$BRQD
 gof_list$TREM
+gof_list$ACHU
+gof_list$PTCA
+gof_list$PETH
+gof_list$GTCA
+gof_list$SBTH
+gof_list$SNPI
+gof_list$CAEL
+gof_list$BANA
+
 
 print(SPECIES)
-gof_df$SSE_p <- c(MTOR = 0.962, FOTH = 0.651, BRQD = 0.992, TREM = 0.660, ACHU =  NA, PTCA = NA, PETH = NA, GTCA = NA, SBTH = NA, SNPI = NA, CAEL = NA, BANA = NA)
-gof_df$Chisq_p <- c(MTOR = 0.993, FOTH = 0.928, BRQD = 0.999, TREM = 0.987, ACHU =  NA, PTCA = NA, PETH = NA, GTCA = NA, SBTH = NA, SNPI = NA, CAEL = NA, BANA = NA)
-gof_df$freemanTukey_p <- c(MTOR = 0.973, FOTH = 0.633, BRQD = 0.984, TREM = 0.825, ACHU =  NA, PTCA = NA, PETH = NA, GTCA = NA, SBTH = NA, SNPI = NA, CAEL = NA, BANA = NA)
+gof_df$SSE_p <- c(MTOR = 0.962, FOTH = 0.651, BRQD = 0.992, TREM = 0.660, ACHU =  0.934, PTCA = 0.864, PETH = 0.583, GTCA = 0.617, SBTH = 0.707, SNPI = 0.971, CAEL = 0.457, BANA = 0.579)
+gof_df$Chisq_p <- c(MTOR = 0.993, FOTH = 0.928, BRQD = 0.999, TREM = 0.987, ACHU =  0.794, PTCA = 0.941, PETH = 0.646, GTCA = 0.806, SBTH = 0.916, SNPI = 0.993, CAEL = 0.428, BANA = 0.569)
+gof_df$freemanTukey_p <- c(MTOR = 0.973, FOTH = 0.633, BRQD = 0.984, TREM = 0.825, ACHU =  0.857, PTCA = 0.829, PETH = 0.504, GTCA = 0.517, SBTH = 0.578, SNPI = 0.922, CAEL = 0.376, BANA = 0.538)
+gof_df[, 'SSE'] <- round(as.numeric(gof_df[, 'SSE']), digits = 3)
+gof_df[, 'Chisq'] <- round(as.numeric(gof_df[, 'Chisq']), digits = 3)
+gof_df[, 'freemanTukey'] <- round(as.numeric(gof_df[, 'freemanTukey']), digits = 3)
+gof_df$c_hat <- round(as.numeric(gof_df$c_hat), digits = 3)
 
+gof_df %>% format(scientific = F)
 
+fwrite(gof_df %>% format(scientific = F), file = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/GOF/GOF_pb_table.csv')
