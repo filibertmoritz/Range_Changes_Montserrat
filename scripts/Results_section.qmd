@@ -17,6 +17,7 @@ select <- dplyr::select
 rename <- dplyr::rename
 filter <- dplyr::filter
 library(stringr)
+library(unmarked)
 
 # setwd
 setwd('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data')
@@ -43,6 +44,11 @@ coeff_bm <- data.frame()
 for(i in 1:length(SPECIES)){
   data <- read.csv(sprintf('coefficients_best_model/%s_best_model_coefficients.csv', SPECIES[i])) 
   coeff_bm <- rbind(coeff_bm, data)}
+models <- list()
+for(i in 1:length(SPECIES)){
+  models[[i]] <- readRDS(file = sprintf('best_model/%s_best_model.rds', SPECIES[i]))
+  names(models)[i] <- SPECIES[i]
+}
 ```
 
 ## Results 
@@ -70,6 +76,16 @@ occu %>% rename(Species = species) %>%
 
 ```{r}
 # produce model selection table only for step g_e
+View(modsel %>% filter(step == 'g_e') %>% select(-step))
+```
+
+```{r, include=FALSE}
+# produce summary table with effect sizes 
+psi <- c("MTOR" = NA,"FOTH" = NA,"BRQD" = NA,"TREM" = NA,"ACHU" = NA,"PTCA" = NA,"PETH" = NA,"GTCA" = NA,"SBTH" = NA,"SNPI" = NA, "CAEL" = NA,"BANA" = NA)
+for(i in 1:length(SPECIES)){
+  psi[i] <- plogis(coef(models[[i]])[1])
+}
+psi
 
 ```
 
