@@ -1,0 +1,91 @@
+---
+title: "Results"
+author: "Filibert Heim"
+format: html
+editor: visual
+---
+
+```{r, include=F}
+
+##################################################################################
+#### load and prepare data #######################################################
+##################################################################################
+
+#load packages 
+library(tidyverse)
+select <- dplyr::select
+rename <- dplyr::rename
+filter <- dplyr::filter
+library(stringr)
+
+# setwd
+setwd('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data')
+
+SPECIES <- c("MTOR","FOTH","BRQD","TREM","ACHU","PTCA","PETH","GTCA","SBTH","SNPI", "CAEL","BANA")
+species_names <- c("Montserrat Oriole","Forest Thrush","Bridled Quail-Dove","Brown Trembler","Antillean Crested Hummingbird","Purple-Throated Carib","Pearly-Eyed Thrasher","Green-Throated Carib","Scaly-Breasted Thrasher","Scaly-Naped Pigeon", "Caribbean Eleania","Banaquit")
+
+# load in data 
+gof_df <- read.csv('GOF/GOF_pb_table.csv')
+occu <- data.frame()
+for(i in 1:length(SPECIES)){
+  data <- read.csv(sprintf('occupancy_data_ranef/%s_occupancy_data.csv', SPECIES[i])) %>% mutate(species = SPECIES[i])
+  occu <- rbind(occu, data)}
+pred_colext <- data.frame()
+birds <- str_remove(list.files(path = 'pred_col_ext/'), pattern = '_pred_colext.csv')
+for(i in 1:length(birds)){
+  data <- read.csv(sprintf('pred_col_ext/%s_pred_colext.csv', birds[i])) 
+  pred_colext <- rbind(pred_colext, data)}
+modsel <- data.frame()
+for(i in 1:length(SPECIES)){
+  data <- read.csv(sprintf('model_selection/%s_modSel.csv', SPECIES[i])) 
+  modsel <- rbind(modsel, data)}
+coeff_bm <- data.frame()
+for(i in 1:length(SPECIES)){
+  data <- read.csv(sprintf('coefficients_best_model/%s_best_model_coefficients.csv', SPECIES[i])) 
+  coeff_bm <- rbind(coeff_bm, data)}
+```
+
+## Results 
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+```{r}
+# plot for colext dynamics 
+pred_colext %>% 
+  ggplot() +
+  geom_line(mapping = aes(x = Elevation, y = Predicted, col = Type)) + 
+  geom_ribbon(mapping = aes(ymin = lower,ymax = upper, x = Elevation, fill = Type), alpha = 0.2) + 
+  facet_wrap(~Species) + theme_test()
+```
+
+```{r}
+# create occupancy plot 
+occu %>% rename(Species = species) %>% 
+  ggplot() +
+  geom_point(mapping = aes(x = Year, y = Occupancy), col = 'firebrick', ) +
+  geom_errorbar(mapping = aes(ymin = lower_cl,ymax = upper_cl, x = Year)) +
+  facet_wrap(~Species, nrow = 4) +
+  theme_test()
+```
+
+```{r}
+# produce model selection table only for step g_e
+
+```
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
