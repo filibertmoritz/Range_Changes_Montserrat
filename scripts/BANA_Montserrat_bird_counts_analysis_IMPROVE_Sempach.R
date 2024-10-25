@@ -191,20 +191,20 @@ names(psi_fitList) <- lapply(psi_fitList, function(x) formula(x)) # set formulas
 
 ###### 4.3: fit models for extinction and colonisation probability for modSel ####
 
-fm28 <- colext(~1, ~1, ~1, ~day+time+rain+wind+activity+location, data = umf, se = T) # constant model
-fm29 <- colext(~1, ~alt, ~1, ~day+time+rain+wind+activity+location, data = umf, se = T) # expansion model
-fm30 <- colext(~1, ~1, ~alt, ~day+time+rain+wind+activity+location, data = umf, se = T) # contraction model 
-fm31 <- colext(~1, ~alt, ~alt, ~day+time+rain+wind+activity+location, data = umf, se = T) # shift model
-fm32 <- colext(~1, ~year_num, ~year_num, ~day+time+rain+wind+activity+location, data = umf, se = T)  # year_num model (trend), this model will exclude the possibility that observed changes are just annual changes
-fm33 <- colext(~1, ~year_fact, ~year_fact, ~day+time+rain+wind+activity+location, data = umf, se = T)  # year_fact model, this model will exclude the possibility that observed changes are just annual changes
+fm28 <- colext(~1, ~1, ~1, ~day+time+rain+wind+activity, data = umf, se = T) # constant model
+fm29 <- colext(~1, ~alt, ~1, ~day+time+rain+wind+activity, data = umf, se = T) # expansion model
+fm30 <- colext(~1, ~1, ~alt, ~day+time+rain+wind+activity, data = umf, se = T) # contraction model 
+fm31 <- colext(~1, ~alt, ~alt, ~day+time+rain+wind+activity, data = umf, se = T) # shift model
+fm32 <- colext(~1, ~year_num, ~year_num, ~day+time+rain+wind+activity, data = umf, se = T)  # year_num model (trend), this model will exclude the possibility that observed changes are just annual changes
+fm33 <- colext(~1, ~year_fact, ~year_fact, ~day+time+rain+wind+activity, data = umf, se = T)  # year_fact model, this model will exclude the possibility that observed changes are just annual changes
 # correct for year_num (trend) and explore alt effects
-fm34 <- colext(~1, ~year_num+alt, ~year_num, ~day+time+rain+wind+activity+location, data = umf, se = T)  # corrected year_num - expansion
-fm35 <- colext(~1, ~year_num, ~year_num+alt, ~day+time+rain+wind+activity+location, data = umf, se = T)  # corrected year_num - contraction
-fm36 <- colext(~1, ~year_num+alt, ~year_num+alt, ~day+time+rain+wind+activity+location, data = umf, se = T)  # corrected year_num - shift
+fm34 <- colext(~1, ~year_num+alt, ~year_num, ~day+time+rain+wind+activity, data = umf, se = T)  # corrected year_num - expansion
+fm35 <- colext(~1, ~year_num, ~year_num+alt, ~day+time+rain+wind+activity, data = umf, se = T)  # corrected year_num - contraction
+fm36 <- colext(~1, ~year_num+alt, ~year_num+alt, ~day+time+rain+wind+activity, data = umf, se = T)  # corrected year_num - shift
 # correct for year_fact and explore alt effects
-fm37 <- colext(~1, ~year_fact+alt, ~year_fact, ~day+time+rain+wind+activity+location, data = umf, se = T)  # corrected year_fact - expansion
-fm38 <- colext(~1, ~year_fact, ~year_fact+alt, ~day+time+rain+wind+activity+location, data = umf, se = T)  # corrected year_fact - contraction
-fm39 <- colext(~1, ~year_fact+alt, ~year_fact+alt, ~day+time+rain+wind+activity+location, data = umf, se = T)  # corrected year_fact - shift, also  global model
+fm37 <- colext(~1, ~year_fact+alt, ~year_fact, ~day+time+rain+wind+activity, data = umf, se = T)  # corrected year_fact - expansion
+fm38 <- colext(~1, ~year_fact, ~year_fact+alt, ~day+time+rain+wind+activity, data = umf, se = T)  # corrected year_fact - contraction
+fm39 <- colext(~1, ~year_fact+alt, ~year_fact+alt, ~day+time+rain+wind+activity, data = umf, se = T)  # corrected year_fact - shift, also  global model
 
 # put the fitted models in a list and rank them by QAIC in aictab
 g_e_fitList <- list(constant = fm28, expansion = fm29, contraction = fm30,
@@ -219,7 +219,7 @@ model_names <- aictab(cand.set = list(constant = fm28, expansion = fm29, contrac
 (g_e_modSel_df <- aictab(cand.set = g_e_fitList, c.hat = c_hat_pb) %>%
     mutate(step = 'g_e',  # Add the step indicator
            model = model_names))  # include short model names
-# best sub-model for g_e(): constant (~1, ~1) AICc difference to 2nd best expansion is 2.94
+# best sub-model for g_e(): constant (~1, ~1) AICc difference to 2nd best expansion is 2.71
 
 ##### 5: Explore best model and export the first things ####
 
