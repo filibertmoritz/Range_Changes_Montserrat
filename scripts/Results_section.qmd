@@ -1,19 +1,26 @@
 ---
-title: "Results"
+title: "Results Section"
 subtitle: 'Range Changes Montserrat studied by employing occupancy modelling'
 author: "Filibert Heim"
-format: html
+format:
+  html: default
+  docx: default
 editor: visual
 date: 10-25-2024
 execute: 
-  echo: false # excludes code chunks from being displayed in the output
+   echo: false # excludes code chunks from being displayed in the output
 ---
 
-```{r, include=F}
+## Results
 
-##################################################################################
-#### load and prepare data #######################################################
-##################################################################################
+```{r setup, include=FALSE}
+#| label: Set global options for rounding and scientific notation
+options(digits = 4,        # Round output to 4 significant digits
+        scipen = 999)      # Disable scientific notation
+```
+
+```{r, message=FALSE, warning=F}
+#| label: load data for later plotting
 
 #load packages 
 library(tidyverse)
@@ -24,62 +31,52 @@ library(stringr)
 library(unmarked)
 library(quarto)
 library(gt)
-
-# setwd
-setwd('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat')
+library(rlang)
 
 SPECIES <- c("MTOR","FOTH","BRQD","TREM","ACHU","PTCA","PETH","GTCA","SBTH","SNPI", "CAEL","BANA")
 species_names <- c("Montserrat Oriole","Forest Thrush","Bridled Quail-Dove","Brown Trembler","Antillean Crested Hummingbird","Purple-Throated Carib","Pearly-Eyed Thrasher","Green-Throated Carib","Scaly-Breasted Thrasher","Scaly-Naped Pigeon", "Caribbean Eleania","Banaquit")
-load(file = 'data/MONTSERRAT_ANNUAL_DATA_INPUT2024.RData')
+load(file = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/data/MONTSERRAT_ANNUAL_DATA_INPUT2024.RData')
 
 # load in data 
-gof_df <- read.csv('output/data/GOF/GOF_pb_table.csv')
+gof_df <- read.csv('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/GOF/GOF_pb_table.csv')
 occu <- data.frame()
 for(i in 1:length(SPECIES)){
-  data <- read.csv(sprintf('output/data/occupancy_data_ranef/%s_occupancy_data.csv', SPECIES[i])) %>% mutate(species = SPECIES[i])
+  data <- read.csv(sprintf('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/occupancy_data_ranef/%s_occupancy_data.csv', SPECIES[i])) %>% mutate(species = SPECIES[i])
   occu <- rbind(occu, data)}
 occu <- occu %>%
-  left_join(species %>% select(SpeciesCode, Species), by = c("species" = "SpeciesCode")) %>% mutate(species_names = str_to_title(Species)) %>% select(-Species)
+  left_join(species %>% select(SpeciesCode, Species), by = join_by(species == SpeciesCode)) %>% mutate(species_names = str_to_title(Species)) %>% select(-Species)
 pred_colext <- data.frame()
-birds <- str_remove(list.files(path = 'output/data/pred_col_ext/'), pattern = '_pred_colext.csv')
+birds <- str_remove(list.files(path = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/pred_col_ext/'), pattern = '_pred_colext.csv')
 for(i in 1:length(birds)){
-  data <- read.csv(sprintf('output/data/pred_col_ext/%s_pred_colext.csv', birds[i])) 
+  data <- read.csv(sprintf('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/pred_col_ext/%s_pred_colext.csv', birds[i])) 
   pred_colext <- rbind(pred_colext, data)}
 pred_colext <- pred_colext %>% rename(species = Species) %>%
-  left_join(species %>% select(SpeciesCode, Species), by = c("species" = "SpeciesCode")) %>% mutate(species_names = str_to_title(Species)) %>% select(-Species)
+  left_join(species %>% select(SpeciesCode, Species), by = join_by(species == SpeciesCode)) %>% mutate(species_names = str_to_title(Species)) %>% select(-Species)
 modsel <- data.frame()
 for(i in 1:length(SPECIES)){
-  data <- read.csv(sprintf('output/data/model_selection/%s_modSel.csv', SPECIES[i])) 
+  data <- read.csv(sprintf('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/model_selection/%s_modSel.csv', SPECIES[i])) 
   modsel <- rbind(modsel, data)}
 modsel <- modsel %>%
-  left_join(species %>% select(SpeciesCode, Species), by = c("species" = "SpeciesCode")) %>% mutate(species_names = str_to_title(Species)) %>% select(-Species)
+  left_join(species %>% select(SpeciesCode, Species), by = join_by(species == SpeciesCode)) %>% mutate(species_names = str_to_title(Species)) %>% select(-Species)
 modsel_best <- modsel %>% group_by(species) %>% filter(step == 'g_e') %>% slice_min(AICc) %>% ungroup() # safe details of best models 
 coeff_bm <- data.frame()
 for(i in 1:length(SPECIES)){
-  data <- read.csv(sprintf('output/data/coefficients_best_model/%s_best_model_coefficients.csv', SPECIES[i])) 
+  data <- read.csv(sprintf('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/coefficients_best_model/%s_best_model_coefficients.csv', SPECIES[i])) 
   coeff_bm <- rbind(coeff_bm, data)}
 models <- list()
 for(i in 1:length(SPECIES)){
-  models[[i]] <- readRDS(file = sprintf('output/data/best_model/%s_best_model.rds', SPECIES[i]))
+  models[[i]] <- readRDS(file = sprintf('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/best_model/%s_best_model.rds', SPECIES[i]))
   names(models)[i] <- SPECIES[i]
 }
 
-# modsel_best %>% filter(model %in% c('year_num_shift', 'year_num_contraction', 'year_num_expansion', 'year_fact_shift', 'year_fact_contraction', 'year_fact_expansion', 'shift', 'contraction', 'expansion') %>% group_by(model) %>% summarise(n = count(model), species = species)
-
-
-
 ```
 
-## Results
+### Overview and Uncertainty
 
-Presence-absence point count data on `r length(SPECIES)` forest bird species on Montserrat was sampled over `r unique(occu$Year) %>% length()` years between `r min(occu$Year)` and `r max(occu$Year)`. Consequently, we analysed `r countdata %>% filter(VisitID != 'NA') %>% filter(!Point %in% c(99,76)) %>% nrow() * length(SPECIES)` observations from `r countdata %>% filter(VisitID != 'NA') %>% filter(!Point %in% c(99,76)) %>% nrow()` surveys using dynamic occupancy models that correct for imperfect detection, calculate colonisation and extinction and provide the possibility to estimate yearly occupancy. We found evidence for elevational range changes in `r length(unique(pred_colext$Species))` out of the `r length(SPECIES)` species (Figure 2, Table 3), with `r modsel_best %>% filter(model == 'contraction') %>% nrow()` species (`r c(modsel_best %>% filter(model == 'contraction') %>% select(species_names))`) best explained by the ‘contraction’ model where extinction depended on elevation, 3 species (Forest Thrush, Pearly-Eyed Thrasher, and Scaly-Naped Pigeon) in which extinction was explained by elevation, and 2 species (Montserrat Oriole, and Scaly-Breasted Thrasher) in which both colonization and extinction were explained by elevation. For another 3 species (Caribbean Elaenia, Green-Throated Carib, and Brown Trembler) the most parsimonious model was the ‘year’ model where extinction and colonization probabilities were best explained by year, and for 1 species (Bananaquit) neither colonization nor extinction probability were explained by either elevation or year but were modelled as constant. The MB-GoF tests (n = 1000 simulations, Table 3) on the best models indicated c-hat values for all models below the rule-of thumb threshold of 3 to 4 (Kéry and Royle, 2020). However, all models showed overdispersion: For 4 species the overdispersion was negligible with c-hat values between 1.08 and 1.54 but for 8 species the overdispersion was higher with c-hat estimates from 1.70 to 2.78. Very low p-values indicate significant differences between simulated data from the model and observed data (Kéry and Royle, 2020). Thus, 8 models showed p-values below 0.05, indicating a lack-of-fit that may affect the validity of the models for inference.
-
-\[model selection table of the last modelling step\]
-
-For the Forest Thrush and the Pearly-Eyed Thrasher the ‘contraction’ model (indicating changing extinction ε with elevation) and for the Scaly-Naped Pigeon the ‘shift’ model (indicating both changing colonization and extinction with elevation) were selected as the most parsimonious by AIC. However, their occupancies were constantly very high with means of 0.9932 (Forest Thrush), 0.9991 (Pearly-Eyed Thrasher), and 0.9759 (Scaly-Naped Pigeon). Given these high occupancies close to 1, the colonization of unoccupied sampling locations is not feasible and thus questions the meaningfulness of the ‘shift’ model for the Scaly-Naped Pigeon. Additionally, this dubiousness is reflected in enormous uncertainties of both the effect size and predicted colonization probabilities along elevation. Furthermore, both the Forest Thrush and Pearly-Eyed Thrasher showed, resulting from overall high occupancies, very low extinction across the whole elevational range with only minor increases at the upper elevational limit (where only few survey points are located) which is insufficient to facilitate a range change. Consequently, we conclude that it is not sensible to interpret the predictions from these models but rather base inference on the remaining 5 meaningful models where at least one of colonization or extinction probabilities were explained by elevation. Moreover, model selection uncertainty occurs in the most parsimonious models for 10 out of 12 analysed species including 4 out of 5 models which suggest elevational range changes. For these models ΔAIC lies within 2 AIC units and therefore the alternative models are not clearly distinguishable from the most parsimonious one (Burnham and Anderson, 2002).
+Presence-absence point count data on `r length(SPECIES)` forest bird species on Montserrat was sampled over `r unique(occu$Year) %>% length()` years between `r min(occu$Year)` and `r max(occu$Year)`. Consequently, we analysed `r countdata %>% filter(VisitID != 'NA') %>% filter(!Point %in% c(99,76)) %>% nrow() * length(SPECIES)` observations from `r countdata %>% filter(VisitID != 'NA') %>% filter(!Point %in% c(99,76)) %>% nrow()` surveys using dynamic occupancy models that correct for imperfect detection, calculate colonisation and extinction probability and provide the possibility to estimate yearly occupancy. We found evidence for elevational range changes in `r length(unique(pred_colext$species))` out of the `r length(SPECIES)` analysed species (Figure 2, Table 3), with `r modsel_best %>% filter(model == 'contraction') %>% nrow()` species (Bridled Quail-Dove, Scaly-Breasted Thrasher and Brown Trembler) best explained by the ‘contraction’ model where extinction depended on elevation, `r modsel_best %>% filter(model == 'expansion') %>% nrow()` species (Purple-Throated Carib) where extinction was explained by elevation ('expansion' model), and `r modsel_best %>% filter(model == 'shift') %>% nrow()` species (Montserrat Oriole) where both colonisation and extinction were explained by elevation ('shift' model). For another `r modsel_best %>% filter(model %in% c('constant', 'year_num')) %>% nrow()` species `r modsel_best %>% filter(model == 'constant') %>% nrow()` species (Banaquit, Forest Thrush, Pearly-Eyed Thrasher and Scaly-Naped Pigeon) the most parsimonious model was the ‘constant’ model where both colonisation and extinction were modeled with intercept only, and for `r modsel_best %>% filter(model == 'year_num') %>% nrow()` species (Antillean Crested Hummingbird, Caribbean Eleania and Green-Throated Carib) both extinction and colonisation were best explained by year ('year_num' model). The GOF test (n = 1000 simulations, Table SUMMARY TABLE) indicated Chisquare p-values ranging from `r min(gof_df$Chisq_p)` to `r max(gof_df$Chisq_p)` . C-hat values for all models laid below 1, but underdispersion was negligible (c-hat \> 0.9, SOURCE) for `r gof_df %>% filter(c_hat > 0.9) %>% nrow()` . Thus, `r gof_df %>% filter(c_hat < 0.9) %>% nrow()` models showed c-hat values substantially lower than 1, potentially indicating a lack-of-fit that may affect the validity of the models for inference. Moreover, model selection uncertainty occurs in the most parsimonious models for `r modsel %>% filter(step == 'g_e') %>% filter(Delta_AICc <=2) %>% filter(Delta_AICc !=0) %>% group_by(species) %>% count() %>% nrow()` out of `r length(SPECIES)` analysed species including `r intersect(modsel_best %>% filter(model %in% c('shift', 'contraction', 'expansion', 'year_num_shift', 'year_num_contraction', 'year_num_expansion', 'year_fact_shift', 'year_fact_expansion', 'year_fact_contraction')) %>% pull(species), modsel %>% filter(step == 'g_e') %>% filter(Delta_AICc <2) %>% filter(Delta_AICc !=0) %>% group_by(species) %>% count() %>% select(species) %>% pull(species)) %>% length()` (Bridled-Quail Dove and Purple-Throated Carib) out of `r length(modsel_best %>% filter(model %in% c('shift', 'contraction', 'expansion', 'year_num_shift', 'year_num_contraction', 'year_num_expansion', 'year_fact_shift', 'year_fact_expansion', 'year_fact_contraction')) %>% pull(species))` models which suggest elevational range changes. For these models ΔAIC lies within 2 AIC units and therefore the alternative models are not clearly distinguishable from the most parsimonious one (Burnham and Anderson, 2002).
 
 ```{r, echo=F, warning=F}
-#| label: overview table // change ridge to location and adapt the explanation // adapt the text for GOF and p-value // chan´ge year_num and year_fact
+#| label: overview table with all effect sizes and gof results
 
 # produce summary table by taking the needed values from all different tables
 sum_table <- modsel_best %>% select(species, model, formula, p_value_Chisq) %>% 
@@ -167,17 +164,27 @@ gt(sum_table) %>% tab_header(
 
 ```
 
-For the Montserrat Oriole colonization increased with elevation from 0.1919 to 0.8215 and extinction decreased with elevation from 0.1144 to 0.0201 showing effect sizes of 0.7601 (0.95 CI: 0.1951, 1.3252) and -0.4725 (0.95 CI: -1.0855, 0.1405), respectively. Notably, the steepness of both colonization and extinction slopes was highest for low elevations but flattening towards higher elevations. The models for the Antillean Crested Hummingbird and Bridled Quail-Dove indicated decreasing colonization along elevation (ranging from 0.9990 - 0.5378 and 0.9765 - 0.4171) but small effect sizes of -1.7362 (0.95 CI: -4.4869, 1.0144), and -1.0416 (0.95 CI: -1.9473, -0.1359), respectively. Interestingly, for both species high colonization close to 1 decreased little in low elevations but dropped considerably towards higher elevations. Contrastingly, for the Purple-Throated Carib colonization generally increased with elevation spanning from 0.4059 to 0.8981 and the estimated effect size was 0.6556 (0.95 CI: -0.4704, 1.7816). The ‘contraction’ model for the Scaly-Naped Pigeon indicated an overall low extinction increasing from 0.0066 at the lower to 0.0989 at the upper elevational margin (effect size: 0.7196 (0.95 CI: 0.2633, 1.1760). All effect sizes were reported on the logit-scale.
+### Dynamics of colonisation and extinction along elevation
 
-\[Occupancy figure\]
+For the Montserrat Oriole colonisation increased with elevation from `r min(pred_colext %>% filter(species == 'MTOR') %>% filter(Type == 'Colonisation') %>% pull(Predicted))` to `r max(pred_colext %>% filter(species == 'MTOR') %>% filter(Type == 'Colonisation') %>% pull(Predicted))` and extinction decreased with elevation from `r max(pred_colext %>% filter(species == 'MTOR') %>% filter(Type == 'Extinction') %>% pull(Predicted))` to `r min(pred_colext %>% filter(species == 'MTOR') %>% filter(Type == 'Extinction') %>% pull(Predicted))` showing effect sizes of `r coeff_bm %>% filter(species=='MTOR') %>% filter(component =='col(alt)') %>% pull(estimate)` (0.95 CI: `r coeff_bm %>% filter(species=='MTOR') %>% filter(component =='col(alt)') %>% pull(lower)` , `r coeff_bm %>% filter(species=='MTOR') %>% filter(component =='col(alt)') %>% pull(upper)`) and `r coeff_bm %>% filter(species=='MTOR') %>% filter(component =='ext(alt)') %>% pull(estimate)` (0.95 CI: `r coeff_bm %>% filter(species=='MTOR') %>% filter(component =='ext(alt)') %>% pull(lower)`, `r coeff_bm %>% filter(species=='MTOR') %>% filter(component =='ext(alt)') %>% pull(upper)`), respectively. Notably, the steepness of both colonisation and extinction slopes was highest for low elevations but flattening towards higher elevations. The ‘expansion’ model for the Purple-Throated Carib suggested a positive colonisation-elevation relation of `r coeff_bm %>% filter(species == 'PTCA') %>% filter(component == 'ext(alt)') %>% pull(estimate)` (0.95 CI: `r coeff_bm %>% filter(species=='PTCA') %>% filter(component =='ext(alt)') %>% pull(lower)` , `r coeff_bm %>% filter(species=='PTCA') %>% filter(component =='ext(alt)') %>% pull(upper)`) leading to values between `r min(pred_colext %>% filter(species == 'PTCA') %>% filter(Type == 'Colonisation') %>% pull(Predicted))` and `r min(pred_colext %>% filter(species == 'PTCA') %>% filter(Type == 'Colonisation') %>% pull(Predicted))`. The models for the Brown Trembler and Bridled Quail-Dove indicated decreasing extinction along elevation (ranging from `r max(pred_colext %>% filter(species == 'TREM') %>% filter(Type == 'Extinction') %>% pull(Predicted))` - `r min(pred_colext %>% filter(species == 'TREM') %>% filter(Type == 'Extinction') %>% pull(Predicted))` and `r max(pred_colext %>% filter(species == 'BRQD') %>% filter(Type == 'Extinction') %>% pull(Predicted))` - `r min(pred_colext %>% filter(species == 'BRQD') %>% filter(Type == 'Extinction') %>% pull(Predicted))`) but small effect sizes of `r coeff_bm %>% filter(species=='TREM') %>% filter(component =='ext(alt)') %>% pull(estimate)` (0.95 CI: `r coeff_bm %>% filter(species=='TREM') %>% filter(component =='ext(alt)') %>% pull(lower)` , `r coeff_bm %>% filter(species=='TREM') %>% filter(component =='ext(alt)') %>% pull(upper)`), and `r coeff_bm %>% filter(species=='BRQD') %>% filter(component =='ext(alt)') %>% pull(estimate)` (0.95 CI: `r coeff_bm %>% filter(species=='BRQD') %>% filter(component =='ext(alt)') %>% pull(lower)` , `r coeff_bm %>% filter(species=='BRQD') %>% filter(component =='ext(alt)') %>% pull(upper)`), respectively. Again, extinction flattened considerably towards higher elevations. Contrastingly, for the Scaly-Breasted Thrasher extinction generally increased with elevation spanning from `r min(pred_colext %>% filter(species == 'SBTH') %>% filter(Type == 'Extinction') %>% pull(Predicted))` to `r max(pred_colext %>% filter(species == 'SBTH') %>% filter(Type == 'Extinction') %>% pull(Predicted))` and the estimated effect size was `r coeff_bm %>% filter(species == 'SBTH') %>% filter(component == 'ext(alt)') %>% pull(estimate)` (0.95 CI: `r coeff_bm %>% filter(species=='SBTH') %>% filter(component =='ext(alt)') %>% pull(lower)` , `r coeff_bm %>% filter(species=='SBTH') %>% filter(component =='ext(alt)') %>% pull(upper)`). All effect sizes were reported on the logit-scale.
 
-5 species showed very high mean occupancies mainly between 0.95 and 1 and narrow widths of the 0.95 confidence interval: The occupancy of the Pearly-Eyed Thrasher and Bananaquit were almost every year 1 (with means of 0.9991, respectively). Slightly lower occupancies were reported for the Scaly-Breasted Thrasher, Forest Thrush and Scaly-Naped Pigeon with means of 0.9844, 0.9932 and 0.9759, respectively. For 4 species mean occupancy lay between 0.85 and 0.95 but showed higher uncertainties. Namely these species were the Montserrat Oriole (0.8292), the Brown Trembler (0.9092), the Purple-Throated Carib (0.8883) and Antillean Crested Hummingbird (0.9407). The remaining 3 species, the Bridled Quail-Dove, Green-Throated Carib and Caribbean Elaenia, showed remarkable yearly variation and low precision in occupancy estimates resulting in means of 0.8720, 0.4755, 0.3325, respectively.
+```{r, include=FALSE}
+#| label: just to be quicker with replacing any values in the text
+# min/max col/ext per species 
+#min(pred_colext %>% filter(species == 'TREM') %>% filter(Type == 'Extinction') %>% pull(Predicted))
+#max(pred_colext %>% filter(species == 'TREM') %>% filter(Type == 'Extinction') %>% pull(Predicted))
 
-During the study period from 2011 to 2023, 8 species showed no clear trend in occupancy. But remarkable trends were observed in 4 species: Occupancies increased for the Montserrat Oriole by 14.04 %, and the Purple-Throated Carib by 26.24 %, whereas occupancies of the Green-Throated Carib dropped by 80.75 %, and Caribbean Elaenia by 97.26 %. Occupancy trajectories are shown in Figure 3 and yearly occupancies and means for all species can be accessed in the Appendix 3.
+# effect sizes and CIs
+#coeff_bm %>% filter(species=='MTOR') %>% filter(component =='ext(alt)') %>% pull(estimate)
+#coeff_bm %>% filter(species=='TREM') %>% filter(component =='ext(alt)') %>% pull(lower)
+#coeff_bm %>% filter(species=='TREM') %>% filter(component =='ext(alt)') %>% pull(upper)
 
-```{r}
+```
+
+```{r, include=FALSE}
+#| label: Colext plot
 # plot for colext dynamics 
-pred_colext %>% 
+plot_colext <- pred_colext %>% 
   ggplot() +
   geom_line(mapping = aes(x = Elevation, y = Predicted, col = Type)) + 
   geom_ribbon(mapping = aes(ymin = lower,ymax = upper, x = Elevation, fill = Type), alpha = 0.2) + 
@@ -189,11 +196,22 @@ pred_colext %>%
   scale_y_continuous(limits = c(0, 1)) +
   
   theme_bw()
+print(plot_colext)
+ggsave(filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plot/Colext_dynamics.jpg', 
+       plot = last_plot(), scale = 1, dpi = 'retina', units = 'px', 
+       width = 3000, height = 2200)
 ```
 
-```{r}
+### Occupancy \[delete? - otherwise the text has to be updated\]
+
+5 species showed very high mean occupancies mainly between 0.95 and 1 and narrow widths of the 0.95 confidence interval: The occupancy of the Pearly-Eyed Thrasher and Bananaquit were almost every year 1 (with means of 0.9991, respectively). Slightly lower occupancies were reported for the Scaly-Breasted Thrasher, Forest Thrush and Scaly-Naped Pigeon with means of 0.9844, 0.9932 and 0.9759, respectively. For 4 species mean occupancy lay between 0.85 and 0.95 but showed higher uncertainties. Namely these species were the Montserrat Oriole (0.8292), the Brown Trembler (0.9092), the Purple-Throated Carib (0.8883) and Antillean Crested Hummingbird (0.9407). The remaining 3 species, the Bridled Quail-Dove, Green-Throated Carib and Caribbean Elaenia, showed remarkable yearly variation and low precision in occupancy estimates resulting in means of 0.8720, 0.4755, 0.3325, respectively.
+
+During the study period from 2011 to 2023, 8 species showed no clear trend in occupancy. But remarkable trends were observed in 4 species: Occupancies increased for the Montserrat Oriole by 14.04 %, and the Purple-Throated Carib by 26.24 %, whereas occupancies of the Green-Throated Carib dropped by 80.75 %, and Caribbean Elaenia by 97.26 %. Occupancy trajectories are shown in Figure 3 and yearly occupancies and means for all species can be accessed in the Appendix 3.
+
+```{r, include=F}
+#| label: Occupancy trajectory plot
 # create occupancy plot 
-occu %>% 
+plot_occu <- occu %>% 
   ggplot() +
   geom_point(mapping = aes(x = Year, y = Occupancy), col = 'firebrick', ) +
   geom_errorbar(mapping = aes(ymin = lower_cl,ymax = upper_cl, x = Year)) +
@@ -203,9 +221,15 @@ occu %>%
   scale_x_continuous(limits = c(2010, 2025), breaks=seq(2011,2025,2),labels=seq(2011,2025,2)) +
 
   theme_test()
+print(plot_occu)
+ggsave(filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plot/Occupancy_trajectories.jpg', 
+       plot = last_plot(), scale = 1, dpi = 'retina', units = 'px', 
+       width = 3000, height = 2200)
 ```
 
 ## Appendix
+
+### Appendix 1: Table of variables used as predictors
 
 ```{r}
 #| label: table for variables 
@@ -239,18 +263,20 @@ gt(variables) %>% tab_header(
 
 ```
 
+### Appendix 2: Model selection table for all species and models
+
 ```{r}
 #| label: full model selection table 
 
 modsel %>% filter(step == 'g_e') %>%
   mutate(step = recode(step, 'g_e' = 'ε,γ', 'psi' = 'Ψ', 'p' = 'P'), Delta_AICc = round(Delta_AICc, 4), AICcWt = format(round(AICcWt, 4), scientific = F)) %>% 
-  select(-species_names, -LL, -ModelLik, -p_value_SSE, -p_value_freemanTukey, -Cum.Wt,-model, -c_hat, -p_value_Chisq) %>% 
-  rename(Species = species, Step = step, `Formula (~Ψ~γ~ε~P)` = formula, nPars = K, ΔAICc = Delta_AICc, `AIC weight` = AICcWt) %>% 
-  select(Species, Step, everything()) %>% 
+  select(-species_names, -LL, -ModelLik, -p_value_SSE, -p_value_freemanTukey, -Cum.Wt,-model, -c_hat, -p_value_Chisq, -step) %>% 
+  rename(Species = species, `Formula (~Ψ~γ~ε~P)` = formula, nPars = K, ΔAICc = Delta_AICc, `AIC weight` = AICcWt) %>% 
+  select(Species, everything()) %>% 
   
   gt() %>%
   tab_header(
-    title = md("Model Comparison Tables for All Species and All Steps")) %>%
+    title = md("Model Comparison Table for Final Candidate Models for Each Species")) %>%
   tab_style(
     style = list(
       cell_text(weight = "bold")),
@@ -266,8 +292,6 @@ modsel %>% filter(step == 'g_e') %>%
   cols_align(
     align = "left", 
     columns = c("Species")) %>% 
-  cols_width(
-    'Formula (~Ψ~γ~ε~P)' ~ px(595)) %>%
   tab_source_note( # add notes below the table coded as markdown by md()
     source_note = md("**Model Parameters**: Ψ = Initial Occupancy; γ = Colonization Probability;  ε = Extinction Probability; P = Detection Probability.<br>
     **Model Predictors**: day = survey day; time = survey time; rain = 1 - 'rain' and 0 - 'no rain' during survey; wind = wind strength ('calm' - 1, 'light' - 2, 'moderate' - 3, 'high' - 4) during survey; activity = general bird activity; alt = altitude in m a.s.l.; location = 'flat-open', 'valley', 'midslope', or 'ridge'; dbh = diameter-breast height (DBH); treeheight = tree-height around the survey point; canopy = canopy cover around survey point; year_num = survey year as numeric value, year_fact = survey year as factor value (see Table 1 for details of measurements).<br>
@@ -297,19 +321,23 @@ modsel %>% filter(step == 'g_e') %>%
       cell_borders(sides = c('bottom'), color = 'black', weight = px(1.5))),
     locations = list(cells_column_labels()))
 
+
 ```
+
+### Appendix 3: Model selection table for all species and only the last modelling step reflecting all considered hypothesis
 
 ```{r}
 #| label: g_e model selection table (only last step)
 
 modsel %>% 
   mutate(step = recode(step, 'g_e' = 'ε,γ', 'psi' = 'Ψ', 'p' = 'P'), Delta_AICc = round(Delta_AICc, 4), AICcWt = format(round(AICcWt, 4), scientific = F)) %>% 
-  select(-species_names, -LL, -ModelLik, -p_value_SSE, -p_value_freemanTukey, -Cum.Wt,-model, -c_hat, -p_value_Chisq, -step) %>% 
-  rename(Species = species, `Formula (~Ψ~γ~ε~P)` = formula, nPars = K, ΔAICc = Delta_AICc, `AIC weight` = AICcWt) %>% 
+  select(-species_names, -LL, -ModelLik, -p_value_SSE, -p_value_freemanTukey, -Cum.Wt,-model, -c_hat, -p_value_Chisq) %>% 
+  rename(Species = species, Step = step, `Formula (~Ψ~γ~ε~P)` = formula, nPars = K, ΔAICc = Delta_AICc, `AIC weight` = AICcWt) %>% 
+  select(Species, Step, everything()) %>%
   
   gt() %>%
   tab_header(
-    title = md("Model Comparison Table for Final Candidate Models for Each Species")) %>%
+    title = md("Model Comparison Tables for All Species and All Steps")) %>%
   tab_style(
     style = list(
       cell_text(weight = "bold")),
@@ -318,7 +346,7 @@ modsel %>%
   tab_style(
     style = list(
       cell_text(weight = "bold")),
-    locations = list(cells_body(rows = c(1,14,27,40, 53, 66, 79, 92, 105, 118, 131, 144)))) %>%
+    locations = list(cells_body(rows = seq(from = 1, to = length(SPECIES)*41, by = 41)))) %>%
   cols_align(
     align = "right",
     columns = c("Formula (~Ψ~γ~ε~P)", "AICc", "ΔAICc", "nPars")) %>%
@@ -347,11 +375,11 @@ modsel %>%
   tab_style(
     style = list(
       cell_borders(sides = c("top"), color = 'gray', weight = px(1))),
-    locations = list(cells_column_labels(), cells_body(rows = c(1,14,27,40, 53, 66, 79, 92, 105, 118, 131, 144)))) %>%
+    locations = list(cells_column_labels(), cells_body(rows = seq(from = 1, to = length(SPECIES)*41, by = 41)))) %>%
   tab_style(
     style = list(
       cell_borders(sides = c("bottom"), color = 'black', weight = px(2.25))),
-    locations = list(cells_body(rows = 156))) %>% 
+    locations = list(cells_body(rows = 41*length(SPECIES)))) %>% 
   tab_style(
     style = list(
       cell_borders(sides = c('bottom'), color = 'black', weight = px(1.5))),
@@ -360,14 +388,23 @@ modsel %>%
 
 ```
 
+### Appendix 4: Occupancy trajectories
+
 ```{r}
 #| label: occupancy trajectories 
 
-# create occupancy plot 
-occu %>% rename(Species = species) %>% 
+plot_occu <- occu %>% 
   ggplot() +
   geom_point(mapping = aes(x = Year, y = Occupancy), col = 'firebrick', ) +
   geom_errorbar(mapping = aes(ymin = lower_cl,ymax = upper_cl, x = Year)) +
-  facet_wrap(~Species, nrow = 4) +
+  facet_wrap(~species_names, nrow = 4) +
+  
+  scale_y_continuous(limits = c(0, 1.1), breaks=seq(0,1,0.2),labels=seq(0,1,0.2))  +
+  scale_x_continuous(limits = c(2010, 2025), breaks=seq(2011,2025,2),labels=seq(2011,2025,2)) +
+
   theme_test()
+print(plot_occu)
+ggsave(filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plot/Occupancy_trajectories.jpg', 
+       plot = last_plot(), scale = 1, dpi = 'retina', units = 'px', 
+       width = 3000, height = 2200)
 ```
