@@ -21,7 +21,7 @@ rename <- dplyr::rename
 ##### 2: load the prepared data and make last preparation #####
 
 # set working directory and load prepared data 
-# setwd('C:/Users/filib/Documents/Studium/Bachelorarbeit/R_BachelorThesisMontserrat')
+setwd('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/')
 # setwd("C:\\STEFFEN\\OneDrive - THE ROYAL SOCIETY FOR THE PROTECTION OF BIRDS\\STEFFEN\\RSPB\\UKOT\\Montserrat\\Analysis\\Population_status_assessment\\AnnualMonitoring\\Montserrat")
 
 load(file = 'data/MONTSERRAT_ANNUAL_DATA_INPUT2024.RData') # change to the current year (most recent year with prepared data)
@@ -224,7 +224,7 @@ model_names <- aictab(cand.set = list(constant = fm28, expansion = fm29, contrac
 ##### 5: Explore best model and export the first things ####
 
 ###### 5.1: Best model ####
-best_model <- fm31 # save best model as best_model
+best_model <- fm30 # save best model as best_model
 saveRDS(best_model, file = sprintf('output/data/best_model/%s_best_model.rds', SPECIES)) # save model on local storage
 summaryOD(best_model, c.hat = c_hat_pb) # adjusted summary statistics with c-hat, if c-hat = 1, there is no difference to the normal summary() function 
 names(best_model) # get names from the submodels
