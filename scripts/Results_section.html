@@ -39,10 +39,11 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Results_section.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -81,7 +82,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <section id="overview-and-uncertainty" class="level3">
 <h3 class="anchored" data-anchor-id="overview-and-uncertainty">Overview and Uncertainty</h3>
-<p>Presence-absence point count data on 12 forest bird species on Montserrat was sampled over 13 years between 2011 and 2024. Consequently, we analysed 39120 observations from 3260 surveys using dynamic occupancy models that correct for imperfect detection, calculate colonisation and extinction probability and provide the possibility to estimate yearly occupancy. We found evidence for elevational range changes in 5 out of the 12 analysed species (Figure 2, Table 3), with 3 species (Bridled Quail-Dove, Scaly-Breasted Thrasher and Brown Trembler) best explained by the ‘contraction’ model where extinction depended on elevation, 1 species (Purple-Throated Carib) where extinction was explained by elevation (‘expansion’ model), and 1 species (Montserrat Oriole) where both colonisation and extinction were explained by elevation (‘shift’ model). For another 4 species (Banaquit, Forest Thrush, Pearly-Eyed Thrasher and Scaly-Naped Pigeon) the most parsimonious model was the ‘constant’ model where both colonisation and extinction were modeled with intercept only, and for 3 species (Antillean Crested Hummingbird, Caribbean Eleania and Green-Throated Carib) both extinction and colonisation were best explained by year (‘year_num’ model). The GOF test (n = 1000 simulations, Table SUMMARY TABLE) indicated Chisquare p-values ranging from 0.428 to 0.999 . C-hat values for all models laid below 1, but underdispersion was negligible (c-hat &gt; 0.9, SOURCE) for 8 . Thus, 4 models showed c-hat values substantially lower than 1, potentially indicating a lack-of-fit that may affect the validity of the models for inference. Moreover, model selection uncertainty occurs in the most parsimonious models for 5 out of 12 analysed species including 2 (Bridled-Quail Dove and Purple-Throated Carib) out of 5 models which suggest elevational range changes. For these models ΔAIC lies within 2 AIC units and therefore the alternative models are not clearly distinguishable from the most parsimonious one (Burnham and Anderson, 2002).</p>
+<p>Presence-absence point count data on 12 forest bird species on Montserrat were sampled over 13 years between 2011 and 2024 including 39120 observations from 3260 surveys.</p>
+<p>We found evidence for elevational range changes in 5 out of the 12 analysed species (Figure 2, Table 3), with 3 species (Bridled Quail-Dove, Scaly-Breasted Thrasher and Brown Trembler) best explained by the ‘contraction’ model where only extinction depended on elevation, 1 species (Purple-Throated Carib) where colonisation was explained by elevation (‘expansion’ model), and 1 species (Montserrat Oriole) where both colonisation and extinction were explained by elevation (‘shift’ model). For another 4 species (Banaquit, Forest Thrush, Pearly-Eyed Thrasher and Scaly-Naped Pigeon) the most parsimonious model was the ‘constant’ model where both colonisation and extinction were modeled with intercept only, and for 3 species (Antillean Crested Hummingbird, Caribbean Eleania and Green-Throated Carib) both extinction and colonisation were best explained by an annual trend (‘year_num’ model). The goodness-of-fit test (n = 1000 simulations, Table S2) indicated no lack of fit for 8 , but for 4 species (Bridled-Quail Dove, Scaly-Breasted Thrasher, Caribbean Eleania and Green-Throated Carib) there was considerable under-dispersion that may effect the validity of the models for inference.</p>
+<p>Model selection uncertainty occurred in 5 species including 2 (Bridled-Quail Dove and Purple-Throated Carib) which exhibited elevational range changes. However, for these 2 species it was not clear whether the elevational changes affected only colonisation, extinction, or both whereas models without elevation received less support (Table S2). In 2 other species (Forest Thrush and Scaly-Naped Pigeon), elevation was contained in a competitive, but not the most parsimonious model.</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(species)`
@@ -710,8 +713,17 @@ TREM = Brown Trembler.</span></span></td>
 </section>
 <section id="dynamics-of-colonisation-and-extinction-along-elevation" class="level3">
 <h3 class="anchored" data-anchor-id="dynamics-of-colonisation-and-extinction-along-elevation">Dynamics of colonisation and extinction along elevation</h3>
-<p>For the Montserrat Oriole colonisation increased with elevation from 0.1256 to 0.9864 and extinction decreased with elevation from 0.1515 to 0.0039 showing effect sizes of 1.4823 (0.95 CI: 0.5027, 2.4619) and -0.9113 (0.95 CI: -1.5893, -0.2332), respectively. Notably, the steepness of both colonisation and extinction slopes was highest for low elevations but flattening towards higher elevations. The ‘expansion’ model for the Purple-Throated Carib suggested a positive colonisation-elevation relation of 1.008 (0.95 CI: 0.0828 , 1.9331) leading to values between 0.3411 and 0.9727. The models for the Brown Trembler and Bridled Quail-Dove indicated decreasing extinction along elevation (ranging from 0.3796 - 0.0001 and 0.1666 - 0.0022) but small effect sizes of -2.1204 (0.95 CI: -2.993, -1.2479), and -1.0714 (0.95 CI: -1.8875, -0.2554), respectively. Again, extinction flattened considerably towards higher elevations. Contrastingly, for the Scaly-Breasted Thrasher extinction generally increased with elevation spanning from 0 to 0.1657 and the estimated effect size was 2.7481 (0.95 CI: 0.9025, 4.5936). All effect sizes were reported on the logit-scale.</p>
+<p>For the Montserrat Oriole colonisation increased with elevation from 0.1256 to 0.9864 and extinction decreased with elevation from 0.1515 to 0.0039 (Table 3, Figure 2). Notably, the steepness of both colonisation and extinction slopes was highest at low elevations but flattening towards higher elevations, while at high elevations colonisation approached 1 and extinction approached 0. The ‘expansion’ model for the Purple-Throated Carib suggested that colonisation increased with elevation from 0.3411 and 0.9727 (Table 3). The models for the Brown Trembler and Bridled Quail-Dove indicated decreasing extinction along elevation ranging from 0.3796 to 0.0001 and 0.1666 to 0.0022, respectively. Again, extinction flattened considerably towards higher elevations. Contrastingly, for the Scaly-Breasted Thrasher extinction generally increased with elevation spanning from 0 to 0.1657.</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
+ℹ Please use the `linewidth` argument instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
+3.5.0.
+ℹ Please use the `legend.position.inside` argument of `theme()` instead.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1281,8 +1293,8 @@ TREM = Brown Trembler.</span></span></td>
 </div>
 </div>
 </section>
-<section id="appendix-2-model-selection-table-for-all-species-and-models" class="level3">
-<h3 class="anchored" data-anchor-id="appendix-2-model-selection-table-for-all-species-and-models">Appendix 2: Model selection table for all species and models</h3>
+<section id="appendix-2-model-selection-table-for-all-species-and-only-the-final-step-models" class="level3">
+<h3 class="anchored" data-anchor-id="appendix-2-model-selection-table-for-all-species-and-only-the-final-step-models">Appendix 2: Model selection table for all species and only the final step models</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="howaxqjfpq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -8089,6 +8101,10 @@ TREM = Brown Trembler.</span></span></td>
 <section id="appendix-4-occupancy-trajectories" class="level3">
 <h3 class="anchored" data-anchor-id="appendix-4-occupancy-trajectories">Appendix 4: Occupancy trajectories</h3>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

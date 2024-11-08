@@ -2,7 +2,9 @@
 title: "Results Section"
 subtitle: 'Range Changes Montserrat studied by employing occupancy modelling'
 author: "Filibert Heim"
-format: docx
+format: 
+  docx: default
+  html: default
 editor: visual
 date: 10-25-2024
 execute: 
@@ -380,7 +382,7 @@ plot_occu <- occu %>%
   ggplot() +
   geom_point(mapping = aes(x = Year, y = Occupancy), col = 'firebrick', size = 1.7, position = position_dodge(width = 0)) +
   geom_errorbar(mapping = aes(ymin = lower_cl, ymax = upper_cl, x = Year), 
-                width = 0.4, size = 0.6, position = position_dodge(width = 0)) +
+                width = 0.4, size = 0.5, position = position_dodge(width = 0)) +
   facet_wrap(~species_names, nrow = 4) +
   
   scale_y_continuous(limits = c(0, 1.1), breaks=seq(0,1,0.2),labels=seq(0,1,0.2))  +
