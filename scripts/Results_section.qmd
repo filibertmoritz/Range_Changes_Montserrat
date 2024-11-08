@@ -2,7 +2,7 @@
 title: "Results Section"
 subtitle: 'Range Changes Montserrat studied by employing occupancy modelling'
 author: "Filibert Heim"
-format: docx: default
+format: docx
 editor: visual
 date: 10-25-2024
 execute: 
