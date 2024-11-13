@@ -110,7 +110,7 @@ sum_table <- sum_table %>% mutate(across(everything(), ~ str_replace(., "^NA.*",
 sum_table <- sum_table %>% select(-`c-hat`)
 
 # call gt and produce pretty table
-gt(sum_table) %>% tab_header(
+sum_table_gt <- gt(sum_table) %>% tab_header(
     title = md("The Effect of Elevation on Initial Occupancy Ψ, Colonization γ and Extinction ε Probabilities")) %>%
   tab_spanner(
     label = "GoF",
@@ -143,14 +143,14 @@ gt(sum_table) %>% tab_header(
              "p-value" ~ px(100), 
              "Initial Occupancy Ψ (CI)" ~ px(200)) %>% 
   tab_footnote(
-    footnote = "For MTOR and SBTH the effect sizes of alt:treeheight are displayed.",
+    footnote = "For MTOR and SBTH the effect sizes of elevation:treeheight are displayed.",
     locations = cells_body(
       columns = c(5),
       rows = c(7,10))) %>% 
   tab_source_note(
     source_note = md("**Model Parameters**: Ψ = Initial Occupancy; γ = Colonization Probability;  ε = Extinction Probability; P = Detection Probability; CI = Confidence Interval Limits (lower, upper).<br>
     **Model Predictors**: day = survey day; time = survey time; rain = 1 - 'rain' and 0 - 'no rain' during survey; wind = wind strength ('calm' - 1, 'light' - 2, 'moderate' - 3, 'high' - 4) during survey; activity = general bird activity; elevation = elevation in m a.s.l.; location = 'flat-open', 'valley', 'midslope', or 'ridge'; dbh = diameter-breast height (DBH); treeheight = tree-height around the survey point; canopy = canopy cover around survey point; year_num = survey year as numeric value, year_fact = survey year as factor value.<br>
-    **Assessment of Model Fit**:p-value = χ2 p-value.<br>
+    **Assessment of Model Fit**: p-value = χ2 p-value.<br>
     **Species**: ACHU = Antillean Crested Hummingbird; BANA = Bananaquit; BRQD = Bridled Quail-Dove; 
     CAEL = Caribbean Elaenia; FOTH = Forest Thrush; GTCA = Green-Throated Carib; MTOR = Montserrat Oriole; 
     PETH = Pearly-Eyed Thrasher; PTCA = Purple-Throated Carib; SBTH = Scaly-Breasted Thrasher; SNPI = Scaly-Naped Pigeon; 
@@ -167,7 +167,11 @@ gt(sum_table) %>% tab_header(
     style = list(
       cell_borders(sides = c("bottom"), color = 'black', weight = px(2.25))),
     locations = list(cells_column_labels(), cells_body(rows = 12)))
+sum_table_gt 
 
+# write_excel_csv2(x = sum_table, file = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/summary_table.csv')
+gtsave(sum_table_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/summary_table.docx')
+gtsave(sum_table_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/summary_table.html')
 ```
 
 ### Dynamics of colonisation and extinction along elevation \[old\]
@@ -187,7 +191,7 @@ For the Montserrat Oriole colonisation increased with elevation from `r min(pred
 
 ```
 
-```{r}
+```{r, warning=F}
 #| label: Colext plot
 # plot for colext dynamics 
 plot_colext <- pred_colext %>% 
@@ -220,7 +224,7 @@ ggsave(filename = 'colext_figure.png', plot = plot_colext, path = 'C:/Users/fili
 #| label: table for variables 
 variables <- read.csv2(file = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/Variables_table.csv')
 
-gt(variables) %>% tab_header(
+variables_gt <- gt(variables) %>% tab_header(
     title = md("Definitions of Variables used as Predictors")) %>%
   tab_style(
     style = list(
@@ -246,6 +250,9 @@ gt(variables) %>% tab_header(
       cell_borders(sides = c("bottom"), color = 'black', weight = px(2.25))),
     locations = list(cells_column_labels(), cells_body(rows = 12)))
 
+
+gtsave(variables_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/variables.docx')
+gtsave(variables_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/variables.html')
 ```
 
 ### Appendix 2: Model selection table for all species and only the final step models
@@ -253,12 +260,13 @@ gt(variables) %>% tab_header(
 ```{r}
 #| label: Model Comparison Table for Final Candidate Models for Each Species 
 
-modsel %>% filter(step == 'g_e') %>%
+modsel_table_last_step <- modsel %>% filter(step == 'g_e') %>%
   mutate(step = recode(step, 'g_e' = 'ε,γ', 'psi' = 'Ψ', 'p' = 'P'), Delta_AICc = round(Delta_AICc, 4), AICcWt = format(round(AICcWt, 4), scientific = F)) %>% 
   select(-species_names, -LL, -ModelLik, -p_value_SSE, -p_value_freemanTukey, -Cum.Wt, -c_hat, -p_value_Chisq, -step) %>% 
   rename(Species = species, `Formula (~Ψ~γ~ε~P)` = formula, nPars = K, ΔAICc = Delta_AICc, `AIC weight` = AICcWt, Model = model) %>% 
-  select(Species, Model, everything()) %>% 
-  
+  select(Species, Model, everything())
+
+modsel_table_last_step_gt <- modsel_table_last_step %>%
   gt() %>%
   tab_header(
     title = md("Model Comparison Table for Final Candidate Models for Each Species")) %>%
@@ -305,7 +313,11 @@ modsel %>% filter(step == 'g_e') %>%
     style = list(
       cell_borders(sides = c('bottom'), color = 'black', weight = px(1.5))),
     locations = list(cells_column_labels()))
+modsel_table_last_step_gt
 
+# write_excel_csv2(x = modsel_table_last_step, file = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/modsel_table_last_step.csv')
+#gtsave(modsel_table_last_step_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/modsel_table_last_step.docx')
+#gtsave(modsel_table_last_step_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/modsel_table_last_step.html')
 
 ```
 
@@ -314,12 +326,13 @@ modsel %>% filter(step == 'g_e') %>%
 ```{r}
 #| label: Model Comparison Tables for All Species and All Steps
 
-modsel %>% 
+modsel_table_full <- modsel %>% 
   mutate(step = recode(step, 'g_e' = 'ε,γ', 'psi' = 'Ψ', 'p' = 'P'), Delta_AICc = round(Delta_AICc, 4), AICcWt = format(round(AICcWt, 4), scientific = F)) %>% 
   select(-species_names, -LL, -ModelLik, -p_value_SSE, -p_value_freemanTukey, -Cum.Wt,-model, -c_hat, -p_value_Chisq) %>% 
   rename(Species = species, Step = step, `Formula (~Ψ~γ~ε~P)` = formula, nPars = K, ΔAICc = Delta_AICc, `AIC weight` = AICcWt) %>% 
-  select(Species, Step, everything()) %>%
-  
+  select(Species, Step, everything())
+
+modsel_table_full_gt <- modsel_table_full %>%
   gt() %>%
   tab_header(
     title = md("Model Comparison Tables for All Species and All Steps")) %>%
@@ -369,13 +382,15 @@ modsel %>%
     style = list(
       cell_borders(sides = c('bottom'), color = 'black', weight = px(1.5))),
     locations = list(cells_column_labels()))
+modsel_table_full_gt
 
-
+gtsave(modsel_table_full_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/modsel_table_full.docx')
+gtsave(modsel_table_full_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/modsel_table_full.html')
 ```
 
 ### Appendix 4: Occupancy trajectories
 
-```{r}
+```{r, warning=F}
 #| label: occupancy trajectories 
 
 plot_occu <- occu %>% 
