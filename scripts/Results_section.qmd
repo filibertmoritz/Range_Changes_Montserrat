@@ -468,7 +468,7 @@ gtsave(modsel_table_full_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempa
 
 
 modsel_table_full_2 <- modsel %>% select(-step, -model, -ModelLik, -AICcWt, -LL, -Cum.Wt, -c_hat, -p_value_SSE, -p_value_Chisq, -p_value_freemanTukey, -species_names, -Delta_AICc) %>% group_by(species, formula) %>% distinct() %>% 
-  group_by(species) %>% 
+  group_by(species) %>% arrange(as.numeric(factor(species, levels = SPECIES)), species, AICc) %>% 
   mutate(Delta_AICc = AICc-min(AICc), # recalculate DeltaAICc for all models 
     wAICc = exp(-0.5*Delta_AICc)/sum(exp(-0.5*Delta_AICc))) %>% # recaluclate wAICc
   mutate(Delta_AICc = round(Delta_AICc, 2), wAICc = format(round(wAICc, 2), scientific = F)) %>% 
@@ -488,7 +488,7 @@ modsel_table_full_gt_2 <- modsel_table_full_2 %>%
   tab_style(
     style = list(
       cell_text(weight = "bold")),
-    locations = list(cells_body(rows = seq(from = 1, to = length(SPECIES)*41, by = 41)))) %>%
+    locations = list(cells_body(rows = c(1, 40, 78, 116, 154, 192, 230, 268, 306, 344, 382, 420)))) %>%
   cols_align(
     align = "right",
     columns = c("Formula (~Ψ~γ~ε~P)", "AICc", "ΔAICc", "nPars")) %>%
@@ -517,7 +517,7 @@ modsel_table_full_gt_2 <- modsel_table_full_2 %>%
   tab_style(
     style = list(
       cell_borders(sides = c("top"), color = 'gray', weight = px(1))),
-    locations = list(cells_column_labels(), cells_body(rows = c(1,39, seq(78, 39+((length(SPECIES)-1)*38), by = 38))))) %>%
+    locations = list(cells_column_labels(), cells_body(rows = c(1, 40, 78, 116, 154, 192, 230, 268, 306, 344, 382, 420)))) %>%
   tab_style(
     style = list(
       cell_borders(sides = c("bottom"), color = 'black', weight = px(2.25))),
@@ -529,8 +529,7 @@ modsel_table_full_gt_2 <- modsel_table_full_2 %>%
 modsel_table_full_gt_2
 
 gtsave(modsel_table_full_gt_2, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/modsel_table_full_pooled_steps.docx')
-gtsave(modsel_table_full_gt, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/modsel_table_full_pooled_steps.html')
-
+gtsave(modsel_table_full_gt_2, filename = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots/modsel_table_full_pooled_steps.html')
 
 
 

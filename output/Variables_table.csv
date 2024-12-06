@@ -1,12 +1,12 @@
 ﻿Type;Covariate;Metric;Definition
 obsCov;day;numeric;Difference in days between date when the bird surveys were conducted and 1st of March
 obsCov;time;numeric;Difference in minutes between commencement time (local time) of each 10-minute bird count and overall earliest reported start time
-obsCov;rain;numeric;1 = 'rain', 0 = 'no rain' during the 10-minute survey time
+obsCov;rain;binary;1 = 'rain', 0 = 'no rain' during the 10-minute survey time
 obsCov;wind;categorical;Wind strength during survey time with ordered levels  'calm' = 1, 'light' = 2, 'moderate' = 3, and 'strong' = 4
 obsCov;activity;numeric;Relative bird activity [0,1] calculated as fraction of sum of counted birds and the overall maximum counted during a one 10-minute period
 siteCov;elevation;numeric;Measured in meter above sea level (m a.s.l.) from a hand-held altimeter 
 siteCov;location;categorical;Relief information with four levels 'flat-open', 'valley', 'midslope', 'ridge'
-siteCov;dhb;numeric;Diameter at breast-height (DBH) measured using a tape
+siteCov;dhb;numeric;Mean diameter at breast-height (DBH) of four trees measured using a tape
 siteCov;canopy;numeric;Mean canopy cover measured at five equidistant points along a random-direction 30m transect centered on the point  in percent 
 siteCov;treeheight;numeric;Visually estimated tree-height as the mean of the highest trees within four 90 degree angles around the survey point within 30 meter radius
 yearlySiteCov;year_num;numeric;Number of survey year starting from 2011
