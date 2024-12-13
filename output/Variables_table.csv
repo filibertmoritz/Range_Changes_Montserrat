@@ -4,7 +4,7 @@ obsCov;time;numeric;Difference in minutes between commencement time (local time)
 obsCov;rain;binary;1 = 'rain', 0 = 'no rain' during the 10-minute survey time
 obsCov;wind;categorical;Wind strength during survey time with ordered levels  'calm' = 1, 'light' = 2, 'moderate' = 3, and 'strong' = 4
 obsCov;activity;numeric;Relative bird activity [0,1] calculated as fraction of sum of counted birds and the overall maximum counted during a one 10-minute period
-siteCov;elevation;numeric;Measured in meter above sea level (m a.s.l.) from a hand-held altimeter 
+siteCov;elevation;numeric;Measured in meter above sea level (m asl) from a hand-held altimeter 
 siteCov;location;categorical;Relief information with four levels 'flat-open', 'valley', 'midslope', 'ridge'
 siteCov;dhb;numeric;Mean diameter at breast-height (DBH) of four trees measured using a tape
 siteCov;canopy;numeric;Mean canopy cover measured at five equidistant points along a random-direction 30m transect centered on the point  in percent 
