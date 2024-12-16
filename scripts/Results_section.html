@@ -84,8 +84,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <section id="overview-and-uncertainty" class="level3">
 <h3 class="anchored" data-anchor-id="overview-and-uncertainty">Overview and Uncertainty</h3>
-<p>Presence-absence point count data on 12 forest bird species on Montserrat were sampled over 13 years between 2011 and 2024 including 39120 observations from 3260 surveys.</p>
-<p>We found evidence for elevational range changes in 5 out of the 12 analysed species (Figure 1, Table 1), with 3 species (Bridled Quail-Dove, Scaly-Breasted Thrasher and Brown Trembler) best explained by the ‘contraction’ model where only extinction depended on elevation, 1 species (Purple-Throated Carib) where colonisation was explained by elevation (‘expansion’ model), and 1 species (Montserrat Oriole) where both colonisation and extinction were explained by elevation (‘shift’ model). For another 4 species (Banaquit, Forest Thrush, Pearly-Eyed Thrasher and Scaly-Naped Pigeon) the most parsimonious model was the ‘constant’ model where both colonisation and extinction were modeled with intercepts only, and for 3 species (Antillean Crested Hummingbird, Caribbean Eleania and Green-Throated Carib) both extinction and colonisation were best explained by an annual trend (‘year-num’ model). An appropriate model fit and thus the validity of the models for inference was not questioned by the performed Chi-Squared goodness of fit test (n = 1000 simulations) since all estimted p-values were above the arbitrary threshold of 0.05 indicating no difference between the observed and survey data. Neverthesles, model selection uncertainty occurred in 5 species including 2 (Bridled-Quail Dove and Purple-Throated Carib) which exhibited elevational range changes. However, for these 2 species it was not clear whether the elevational changes affected only colonisation, extinction, or both (cumulative wAICc for all elevation model &gt; 0.7, Table S2), whereas models without elevation received less support (Table S2). In 2 other species (Forest Thrush and Scaly-Naped Pigeon), elevation was contained in a competitive, but not the most parsimonious model (Table S2).</p>
+<p>Point count data for 12 forest bird species on Montserrat were sampled in 13 years between 2011 and 2024, compromising 39120 observations from 3260 surveys.</p>
+<p>We found evidence for elevational range changes in 5 out of the 12 analysed species (Figure 1, Table 1), with 3 species (Bridled Quail-Dove, Scaly-Breasted Thrasher and Brown Trembler) best explained by the ‘contraction’ model where only extinction depended on elevation, 1 species (Purple-Throated Carib) where colonisation was explained by elevation (‘expansion’ model), and 1 species (Montserrat Oriole) where both colonisation and extinction were explained by elevation (‘shift’ model). For another 4 species (Banaquit, Forest Thrush, Pearly-Eyed Thrasher and Scaly-Naped Pigeon) the most parsimonious model was the ‘constant’ model where both colonisation and extinction were modeled with intercepts only, and for 3 species (Antillean Crested Hummingbird, Caribbean Eleania and Green-Throated Carib) both extinction and colonisation were best explained by an annual trend (‘year-num’ model). An appropriate model fit and thus the validity of the models for inference was not questioned by the performed Chi-Squared goodness of fit test (n = 1000 simulations) since all estimted p-values were above the arbitrary threshold of 0.05 indicating no difference between the observed and survey data.</p>
+<p>We found considerable model selection uncertainty in 5 species including 2 (Bridled-Quail Dove and Purple-Throated Carib) which exhibited elevational range changes. However, for these 2 species, the uncertainty only included whether elevation affected colonisation, extinction, or both (cumulative wAICc for all elevation model ≥0.5, Table S2), whereas models without elevation received less support (Table S2). In 2 other species (Forest Thrush and Scaly-Naped Pigeon), elevation was contained in a competitive, but not the most parsimonious model (Table S2).</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(species)`
@@ -1351,27 +1352,6 @@ TREM = Brown Trembler.</span></span></td>
 </table>
 </div>
 </div>
-</div>
-</section>
-<section id="dynamics-of-colonisation-and-extinction-along-elevation-old" class="level3">
-<h3 class="anchored" data-anchor-id="dynamics-of-colonisation-and-extinction-along-elevation-old">Dynamics of colonisation and extinction along elevation [old]</h3>
-<p>For the Montserrat Oriole colonisation increased with elevation from 0.12563 to 0.98642 and extinction decreased with elevation from 0.15151 to 0.00387 (Table 3, Figure 2). Notably, the steepness of both colonisation and extinction slopes was highest at low elevations but flattening towards higher elevations, while at high elevations colonisation approached 1 and extinction approached 0. The ‘expansion’ model for the Purple-Throated Carib suggested that colonisation increased with elevation from 0.34107 and 0.97275 (Table 3). The models for the Brown Trembler and Bridled Quail-Dove indicated decreasing extinction along elevation ranging from 0.37957 to 0.00008 and 0.16656 to 0.00221, respectively. Again, extinction flattened considerably towards higher elevations. Contrastingly, for the Scaly-Breasted Thrasher extinction generally increased with elevation spanning from 0 to 0.16573.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Results_section_files/figure-html/Colext%20plot-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="supplementary" class="level2">
-<h2 class="anchored" data-anchor-id="supplementary">Supplementary</h2>
-<section id="supplementary-1-table-of-variables-used-as-predictors" class="level3">
-<h3 class="anchored" data-anchor-id="supplementary-1-table-of-variables-used-as-predictors">Supplementary 1: Table of variables used as predictors</h3>
-<div class="cell">
 <div class="cell-output-display">
 <div id="tjnehrarrc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#tjnehrarrc table {
@@ -1822,112 +1802,206 @@ TREM = Brown Trembler.</span></span></td>
   height: 0px !important;
 }
 </style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header gt_heading">
-<th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="font-weight: bold; border-top-width: 2.25px; border-top-style: solid; border-top-color: black; border-bottom-width: 1.5px; border-bottom-style: solid; border-bottom-color: black">Definitions of Variables used as Predictors</th>
-</tr>
-<tr class="odd gt_col_headings">
-<th id="Type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black" scope="col">Type</th>
-<th id="Covariate" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black" scope="col">Covariate</th>
-<th id="Metric" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black" scope="col">Metric</th>
-<th id="Definition" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black" scope="col">Definition</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Type">obsCov</td>
-<td class="gt_row gt_left" headers="Covariate">day</td>
-<td class="gt_row gt_left" headers="Metric">numeric</td>
-<td class="gt_row gt_left" headers="Definition">Difference in days between date when the bird surveys were conducted and 1st of March</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Type">obsCov</td>
-<td class="gt_row gt_left" headers="Covariate">time</td>
-<td class="gt_row gt_left" headers="Metric">numeric</td>
-<td class="gt_row gt_left" headers="Definition">Difference in minutes between commencement time (local time) of each 10-minute bird count and overall earliest reported start time</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Type">obsCov</td>
-<td class="gt_row gt_left" headers="Covariate">rain</td>
-<td class="gt_row gt_left" headers="Metric">binary</td>
-<td class="gt_row gt_left" headers="Definition">1 = 'rain', 0 = 'no rain' during the 10-minute survey time</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Type">obsCov</td>
-<td class="gt_row gt_left" headers="Covariate">wind</td>
-<td class="gt_row gt_left" headers="Metric">categorical</td>
-<td class="gt_row gt_left" headers="Definition">Wind strength during survey time with ordered levels 'calm' = 1, 'light' = 2, 'moderate' = 3, and 'strong' = 4</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Type">obsCov</td>
-<td class="gt_row gt_left" headers="Covariate">activity</td>
-<td class="gt_row gt_left" headers="Metric">numeric</td>
-<td class="gt_row gt_left" headers="Definition">Relative bird activity [0,1] calculated as fraction of sum of counted birds and the overall maximum counted during a one 10-minute period</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Type">siteCov</td>
-<td class="gt_row gt_left" headers="Covariate">elevation</td>
-<td class="gt_row gt_left" headers="Metric">numeric</td>
-<td class="gt_row gt_left" headers="Definition">Measured in meter above sea level (m a.s.l.) from a hand-held altimeter</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Type">siteCov</td>
-<td class="gt_row gt_left" headers="Covariate">location</td>
-<td class="gt_row gt_left" headers="Metric">categorical</td>
-<td class="gt_row gt_left" headers="Definition">Relief information with four levels 'flat-open', 'valley', 'midslope', 'ridge'</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Type">siteCov</td>
-<td class="gt_row gt_left" headers="Covariate">dhb</td>
-<td class="gt_row gt_left" headers="Metric">numeric</td>
-<td class="gt_row gt_left" headers="Definition">Mean diameter at breast-height (DBH) of four trees measured using a tape</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Type">siteCov</td>
-<td class="gt_row gt_left" headers="Covariate">canopy</td>
-<td class="gt_row gt_left" headers="Metric">numeric</td>
-<td class="gt_row gt_left" headers="Definition">Mean canopy cover measured at five equidistant points along a random-direction 30m transect centered on the point in percent</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Type">siteCov</td>
-<td class="gt_row gt_left" headers="Covariate">treeheight</td>
-<td class="gt_row gt_left" headers="Metric">numeric</td>
-<td class="gt_row gt_left" headers="Definition">Visually estimated tree-height as the mean of the highest trees within four 90 degree angles around the survey point within 30 meter radius</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Type">yearlySiteCov</td>
-<td class="gt_row gt_left" headers="Covariate">year_num</td>
-<td class="gt_row gt_left" headers="Metric">numeric</td>
-<td class="gt_row gt_left" headers="Definition">Number of survey year starting from 2011</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Type" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black">yearlySiteCov</td>
-<td class="gt_row gt_left" headers="Covariate" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black">year_fact</td>
-<td class="gt_row gt_left" headers="Metric" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black">categorical</td>
-<td class="gt_row gt_left" headers="Definition" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black">Number of survey year starting from 2011</td>
-</tr>
-</tbody><tfoot class="gt_sourcenotes">
-<tr class="even">
-<td colspan="4" class="gt_sourcenote"><strong>Type</strong>: obsCov = Observation Level Covariates, siteCov = Site Level Covariates, yearlySiteCov = Year Level Covariates.<br> <strong>Transformation</strong>: All numeric variables were scaled to a mean of 0 and standard deviation of 1.</td>
-</tr>
-</tfoot>
-
+<table class="gt_table" style="table-layout:fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col style="width:200px;">
+    <col style="width:200px;">
+    <col style="width:200px;">
+    <col style="width:100px;">
+  </colgroup>
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="10" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="font-weight: bold; border-top-width: 2.25px; border-top-style: solid; border-top-color: black; border-bottom-width: 1.5px; border-bottom-style: solid; border-bottom-color: black;"><span data-qmd-base64="VGhlIEVmZmVjdCBvZiBFbGV2YXRpb24gb24gSW5pdGlhbCBPY2N1cGFuY3kgzqgsIENvbG9uaXphdGlvbiDOsyBhbmQgRXh0aW5jdGlvbiDOtSBQcm9iYWJpbGl0aWVz"><span class="gt_from_md">The Effect of Elevation on Initial Occupancy Ψ, Colonization γ and Extinction ε Probabilities</span></span></td>
+    </tr>
+    
+    <tr class="gt_col_headings gt_spanner_row">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="Species">Species</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="Model">Model</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id="Dynamic Occupancy Model Formulation">
+        <div class="gt_column_spanner">Dynamic Occupancy Model Formulation</div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Effect of Elevation on">
+        <div class="gt_column_spanner">Effect of Elevation on</div>
+      </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="wAICc">wAICc</th>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="aΨ">Ψ</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="aγ">γ</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="aε">ε</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="P">P</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="aΨ-(CI)">Ψ (CI)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="aγ-(CI)">γ (CI)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="aε-(CI)">ε (CI)</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Species" class="gt_row gt_left">ACHU</td>
+<td headers="Model" class="gt_row gt_left">year-num</td>
+<td headers="Ψ" class="gt_row gt_left">elevation+treeheight</td>
+<td headers="γ" class="gt_row gt_left">year_num</td>
+<td headers="ε" class="gt_row gt_left">year_num</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity+location</td>
+<td headers="Ψ (CI)" class="gt_row gt_center">24.55 (-151.16, 200.26)</td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center"></td>
+<td headers="wAICc" class="gt_row gt_right">0.35</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">BANA</td>
+<td headers="Model" class="gt_row gt_left">constant</td>
+<td headers="Ψ" class="gt_row gt_left">constant</td>
+<td headers="γ" class="gt_row gt_left">constant</td>
+<td headers="ε" class="gt_row gt_left">constant</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity</td>
+<td headers="Ψ (CI)" class="gt_row gt_center"></td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center"></td>
+<td headers="wAICc" class="gt_row gt_right">0.6</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">BRQD</td>
+<td headers="Model" class="gt_row gt_left">contraction</td>
+<td headers="Ψ" class="gt_row gt_left">treeheight+canopy</td>
+<td headers="γ" class="gt_row gt_left">constant</td>
+<td headers="ε" class="gt_row gt_left">elevation</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity</td>
+<td headers="Ψ (CI)" class="gt_row gt_center"></td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center">-1.07 (-1.89, -0.26)</td>
+<td headers="wAICc" class="gt_row gt_right">0.46</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">CAEL</td>
+<td headers="Model" class="gt_row gt_left">year-num</td>
+<td headers="Ψ" class="gt_row gt_left">treeheight+canopy</td>
+<td headers="γ" class="gt_row gt_left">year_num</td>
+<td headers="ε" class="gt_row gt_left">year_num</td>
+<td headers="P" class="gt_row gt_left">day+I(time^2)+rain+wind+activity</td>
+<td headers="Ψ (CI)" class="gt_row gt_center"></td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center"></td>
+<td headers="wAICc" class="gt_row gt_right">0.65</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">FOTH</td>
+<td headers="Model" class="gt_row gt_left">constant</td>
+<td headers="Ψ" class="gt_row gt_left">constant</td>
+<td headers="γ" class="gt_row gt_left">constant</td>
+<td headers="ε" class="gt_row gt_left">constant</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity+location</td>
+<td headers="Ψ (CI)" class="gt_row gt_center"></td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center"></td>
+<td headers="wAICc" class="gt_row gt_right">0.36</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">GTCA</td>
+<td headers="Model" class="gt_row gt_left">year-num</td>
+<td headers="Ψ" class="gt_row gt_left">constant</td>
+<td headers="γ" class="gt_row gt_left">year_num</td>
+<td headers="ε" class="gt_row gt_left">year_num</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity</td>
+<td headers="Ψ (CI)" class="gt_row gt_center"></td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center"></td>
+<td headers="wAICc" class="gt_row gt_right">0.63</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">MTOR</td>
+<td headers="Model" class="gt_row gt_left">shift</td>
+<td headers="Ψ" class="gt_row gt_left">elevation:treeheight+canopy</td>
+<td headers="γ" class="gt_row gt_left">elevation</td>
+<td headers="ε" class="gt_row gt_left">elevation</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity+location</td>
+<td headers="Ψ (CI)" class="gt_row gt_center">-1.23 (-2.31, -0.15)<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></td>
+<td headers="γ (CI)" class="gt_row gt_center">1.48 (0.5, 2.46)</td>
+<td headers="ε (CI)" class="gt_row gt_center">-0.91 (-1.59, -0.23)</td>
+<td headers="wAICc" class="gt_row gt_right">0.62</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">PETH</td>
+<td headers="Model" class="gt_row gt_left">constant</td>
+<td headers="Ψ" class="gt_row gt_left">constant</td>
+<td headers="γ" class="gt_row gt_left">constant</td>
+<td headers="ε" class="gt_row gt_left">constant</td>
+<td headers="P" class="gt_row gt_left">day+I(time^2)+rain+wind+activity</td>
+<td headers="Ψ (CI)" class="gt_row gt_center"></td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center"></td>
+<td headers="wAICc" class="gt_row gt_right">0.6</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">PTCA</td>
+<td headers="Model" class="gt_row gt_left">expansion</td>
+<td headers="Ψ" class="gt_row gt_left">treeheight</td>
+<td headers="γ" class="gt_row gt_left">elevation</td>
+<td headers="ε" class="gt_row gt_left">constant</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity+location</td>
+<td headers="Ψ (CI)" class="gt_row gt_center"></td>
+<td headers="γ (CI)" class="gt_row gt_center">1.01 (0.08, 1.93)</td>
+<td headers="ε (CI)" class="gt_row gt_center"></td>
+<td headers="wAICc" class="gt_row gt_right">0.3</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">SBTH</td>
+<td headers="Model" class="gt_row gt_left">contraction</td>
+<td headers="Ψ" class="gt_row gt_left">elevation:treeheight</td>
+<td headers="γ" class="gt_row gt_left">constant</td>
+<td headers="ε" class="gt_row gt_left">elevation</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity+location</td>
+<td headers="Ψ (CI)" class="gt_row gt_center">5.33 (-16.24, 26.9)<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center">2.75 (0.9, 4.59)</td>
+<td headers="wAICc" class="gt_row gt_right">0.65</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left">SNPI</td>
+<td headers="Model" class="gt_row gt_left">constant</td>
+<td headers="Ψ" class="gt_row gt_left">constant</td>
+<td headers="γ" class="gt_row gt_left">constant</td>
+<td headers="ε" class="gt_row gt_left">constant</td>
+<td headers="P" class="gt_row gt_left">day+time+rain+wind+activity+location</td>
+<td headers="Ψ (CI)" class="gt_row gt_center"></td>
+<td headers="γ (CI)" class="gt_row gt_center"></td>
+<td headers="ε (CI)" class="gt_row gt_center"></td>
+<td headers="wAICc" class="gt_row gt_right">0.41</td></tr>
+    <tr><td headers="Species" class="gt_row gt_left" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;">TREM</td>
+<td headers="Model" class="gt_row gt_left" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;">contraction</td>
+<td headers="Ψ" class="gt_row gt_left" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;">treeheight+canopy</td>
+<td headers="γ" class="gt_row gt_left" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;">constant</td>
+<td headers="ε" class="gt_row gt_left" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;">elevation</td>
+<td headers="P" class="gt_row gt_left" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;">day+time+rain+wind+activity+location</td>
+<td headers="Ψ (CI)" class="gt_row gt_center" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;"></td>
+<td headers="γ (CI)" class="gt_row gt_center" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;"></td>
+<td headers="ε (CI)" class="gt_row gt_center" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;">-2.12 (-2.99, -1.25)</td>
+<td headers="wAICc" class="gt_row gt_right" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black;">0.76</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="10"><span data-qmd-base64="PHN0cm9uZz5Nb2RlbCBQYXJhbWV0ZXJzPC9zdHJvbmc+OiDOqCA9IEluaXRpYWwgT2NjdXBhbmN5OyDOsyA9IENvbG9uaXNhdGlvbiBQcm9iYWJpbGl0eTsgIM61ID0gRXh0aW5jdGlvbiBQcm9iYWJpbGl0eTsgUCA9IERldGVjdGlvbiBQcm9iYWJpbGl0eTsgQ0kgPSBDb25maWRlbmNlIEludGVydmFsIExpbWl0cyAobG93ZXIsIHVwcGVyKS48YnI+CjxzdHJvbmc+TW9kZWwgUHJlZGljdG9yczwvc3Ryb25nPjogZGF5ID0gc3VydmV5IGRheTsgdGltZSA9IHN1cnZleSB0aW1lOyByYWluID0gMSAtIOKAmHJhaW7igJkgYW5kIDAgLSDigJhubyByYWlu4oCZIGR1cmluZyBzdXJ2ZXk7IHdpbmQgPSB3aW5kIHN0cmVuZ3RoICjigJhjYWxt4oCZIC0gMSwg4oCYbGlnaHTigJkgLSAyLCDigJhtb2RlcmF0ZeKAmSAtIDMsIOKAmGhpZ2jigJkgLSA0KSBkdXJpbmcgc3VydmV5OyBhY3Rpdml0eSA9IGdlbmVyYWwgYmlyZCBhY3Rpdml0eTsgZWxldmF0aW9uID0gZWxldmF0aW9uIGluIG0gYS5zLmwuOyBsb2NhdGlvbiA9IOKAmGZsYXQtb3BlbuKAmSwg4oCYdmFsbGV54oCZLCDigJhtaWRzbG9wZeKAmSwgb3Ig4oCYcmlkZ2XigJk7IGRiaCA9IGRpYW1ldGVyLWJyZWFzdCBoZWlnaHQgKERCSCk7IHRyZWVoZWlnaHQgPSB0cmVlLWhlaWdodCBhcm91bmQgdGhlIHN1cnZleSBwb2ludDsgY2Fub3B5ID0gY2Fub3B5IGNvdmVyIGFyb3VuZCBzdXJ2ZXkgcG9pbnQ7IHllYXJfbnVtID0gc3VydmV5IHllYXIgYXMgbnVtZXJpYyB2YWx1ZSwgeWVhcl9mYWN0ID0gc3VydmV5IHllYXIgYXMgZmFjdG9yIHZhbHVlLjxicj4KPHN0cm9uZz5XZWlnaHQgb2YgRXZpZGVuY2U8L3N0cm9uZz46IHdBSUNjID0gd2VpZ2h0cyBvZiBFdmlkZW5jZS48YnI+CjxzdHJvbmc+U3BlY2llczwvc3Ryb25nPjogQUNIVSA9IEFudGlsbGVhbiBDcmVzdGVkIEh1bW1pbmdiaXJkOyBCQU5BID0gQmFuYW5hcXVpdDsgQlJRRCA9IEJyaWRsZWQgUXVhaWwtRG92ZTsKQ0FFTCA9IENhcmliYmVhbiBFbGFlbmlhOyBGT1RIID0gRm9yZXN0IFRocnVzaDsgR1RDQSA9IEdyZWVuLVRocm9hdGVkIENhcmliOyBNVE9SID0gTW9udHNlcnJhdCBPcmlvbGU7ClBFVEggPSBQZWFybHktRXllZCBUaHJhc2hlcjsgUFRDQSA9IFB1cnBsZS1UaHJvYXRlZCBDYXJpYjsgU0JUSCA9IFNjYWx5LUJyZWFzdGVkIFRocmFzaGVyOyBTTlBJID0gU2NhbHktTmFwZWQgUGlnZW9uOwpUUkVNID0gQnJvd24gVHJlbWJsZXIu"><span class="gt_from_md"><strong>Model Parameters</strong>: Ψ = Initial Occupancy; γ = Colonisation Probability;  ε = Extinction Probability; P = Detection Probability; CI = Confidence Interval Limits (lower, upper).<br>
+<strong>Model Predictors</strong>: day = survey day; time = survey time; rain = 1 - ‘rain’ and 0 - ‘no rain’ during survey; wind = wind strength (‘calm’ - 1, ‘light’ - 2, ‘moderate’ - 3, ‘high’ - 4) during survey; activity = general bird activity; elevation = elevation in m a.s.l.; location = ‘flat-open’, ‘valley’, ‘midslope’, or ‘ridge’; dbh = diameter-breast height (DBH); treeheight = tree-height around the survey point; canopy = canopy cover around survey point; year_num = survey year as numeric value, year_fact = survey year as factor value.<br>
+<strong>Weight of Evidence</strong>: wAICc = weights of Evidence.<br>
+<strong>Species</strong>: ACHU = Antillean Crested Hummingbird; BANA = Bananaquit; BRQD = Bridled Quail-Dove;
+CAEL = Caribbean Elaenia; FOTH = Forest Thrush; GTCA = Green-Throated Carib; MTOR = Montserrat Oriole;
+PETH = Pearly-Eyed Thrasher; PTCA = Purple-Throated Carib; SBTH = Scaly-Breasted Thrasher; SNPI = Scaly-Naped Pigeon;
+TREM = Brown Trembler.</span></span></td>
+    </tr>
+  </tfoot>
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="10"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> For MTOR and SBTH the effect sizes of elevation:treeheight are displayed.</td>
+    </tr>
+  </tfoot>
 </table>
-
 </div>
 </div>
 </div>
 </section>
-<section id="appendix-2-model-selection-table-for-all-species-and-only-the-final-step-models" class="level3">
-<h3 class="anchored" data-anchor-id="appendix-2-model-selection-table-for-all-species-and-only-the-final-step-models">Appendix 2: Model selection table for all species and only the final step models</h3>
+<section id="dynamics-of-colonisation-and-extinction-along-elevation-old" class="level3">
+<h3 class="anchored" data-anchor-id="dynamics-of-colonisation-and-extinction-along-elevation-old">Dynamics of colonisation and extinction along elevation [old]</h3>
+<p>For the Montserrat Oriole colonisation increased with elevation from 0.12563 to 0.98642 and extinction decreased with elevation from 0.15151 to 0.00387 (Table 3, Figure 2). Notably, the steepness of both colonisation and extinction slopes was highest at low elevations but flattening towards higher elevations, while at high elevations colonisation approached 1 and extinction approached 0. The ‘expansion’ model for the Purple-Throated Carib suggested that colonisation increased with elevation from 0.34107 and 0.97275 (Table 3). The models for the Brown Trembler and Bridled Quail-Dove indicated decreasing extinction along elevation ranging from 0.37957 to 0.00008 and 0.16656 to 0.00221, respectively. Again, extinction flattened considerably towards higher elevations. Contrastingly, for the Scaly-Breasted Thrasher extinction generally increased with elevation spanning from 0 to 0.16573.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Results_section_files/figure-html/Colext%20plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="supplementary" class="level2">
+<h2 class="anchored" data-anchor-id="supplementary">Supplementary</h2>
+<section id="supplementary-1-table-of-variables-used-as-predictors" class="level3">
+<h3 class="anchored" data-anchor-id="supplementary-1-table-of-variables-used-as-predictors">Supplementary 1: Table of variables used as predictors</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tyhuqvufng" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -2376,6 +2450,563 @@ TREM = Brown Trembler.</span></span></td>
 }
 
 #tyhuqvufng div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header gt_heading">
+<th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="font-weight: bold; border-top-width: 2.25px; border-top-style: solid; border-top-color: black; border-bottom-width: 1.5px; border-bottom-style: solid; border-bottom-color: black">Definitions of Variables used as Predictors</th>
+</tr>
+<tr class="odd gt_col_headings">
+<th id="Type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black" scope="col">Type</th>
+<th id="Covariate" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black" scope="col">Covariate</th>
+<th id="Metric" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black" scope="col">Metric</th>
+<th id="Definition" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold; border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black" scope="col">Definition</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Type">obsCov</td>
+<td class="gt_row gt_left" headers="Covariate">day</td>
+<td class="gt_row gt_left" headers="Metric">numeric</td>
+<td class="gt_row gt_left" headers="Definition">Difference in days between date when the bird surveys were conducted and 1st of March</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Type">obsCov</td>
+<td class="gt_row gt_left" headers="Covariate">time</td>
+<td class="gt_row gt_left" headers="Metric">numeric</td>
+<td class="gt_row gt_left" headers="Definition">Difference in minutes between commencement time (local time) of each 10-minute bird count and overall earliest reported start time</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Type">obsCov</td>
+<td class="gt_row gt_left" headers="Covariate">rain</td>
+<td class="gt_row gt_left" headers="Metric">binary</td>
+<td class="gt_row gt_left" headers="Definition">1 = 'rain', 0 = 'no rain' during the 10-minute survey time</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Type">obsCov</td>
+<td class="gt_row gt_left" headers="Covariate">wind</td>
+<td class="gt_row gt_left" headers="Metric">categorical</td>
+<td class="gt_row gt_left" headers="Definition">Wind strength during survey time with ordered levels 'calm' = 1, 'light' = 2, 'moderate' = 3, and 'strong' = 4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Type">obsCov</td>
+<td class="gt_row gt_left" headers="Covariate">activity</td>
+<td class="gt_row gt_left" headers="Metric">numeric</td>
+<td class="gt_row gt_left" headers="Definition">Relative bird activity [0,1] calculated as fraction of sum of counted birds and the overall maximum counted during a one 10-minute period</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Type">siteCov</td>
+<td class="gt_row gt_left" headers="Covariate">elevation</td>
+<td class="gt_row gt_left" headers="Metric">numeric</td>
+<td class="gt_row gt_left" headers="Definition">Measured in meter above sea level (m asl) from a hand-held altimeter</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Type">siteCov</td>
+<td class="gt_row gt_left" headers="Covariate">location</td>
+<td class="gt_row gt_left" headers="Metric">categorical</td>
+<td class="gt_row gt_left" headers="Definition">Relief information with four levels 'flat-open', 'valley', 'midslope', 'ridge'</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Type">siteCov</td>
+<td class="gt_row gt_left" headers="Covariate">dhb</td>
+<td class="gt_row gt_left" headers="Metric">numeric</td>
+<td class="gt_row gt_left" headers="Definition">Mean diameter at breast-height (DBH) of four trees measured using a tape</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Type">siteCov</td>
+<td class="gt_row gt_left" headers="Covariate">canopy</td>
+<td class="gt_row gt_left" headers="Metric">numeric</td>
+<td class="gt_row gt_left" headers="Definition">Mean canopy cover measured at five equidistant points along a random-direction 30m transect centered on the point in percent</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Type">siteCov</td>
+<td class="gt_row gt_left" headers="Covariate">treeheight</td>
+<td class="gt_row gt_left" headers="Metric">numeric</td>
+<td class="gt_row gt_left" headers="Definition">Visually estimated tree-height as the mean of the highest trees within four 90 degree angles around the survey point within 30 meter radius</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Type">yearlySiteCov</td>
+<td class="gt_row gt_left" headers="Covariate">year_num</td>
+<td class="gt_row gt_left" headers="Metric">numeric</td>
+<td class="gt_row gt_left" headers="Definition">Number of survey year starting from 2011</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Type" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black">yearlySiteCov</td>
+<td class="gt_row gt_left" headers="Covariate" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black">year_fact</td>
+<td class="gt_row gt_left" headers="Metric" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black">categorical</td>
+<td class="gt_row gt_left" headers="Definition" style="border-bottom-width: 2.25px; border-bottom-style: solid; border-bottom-color: black">Number of survey year starting from 2011</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="even">
+<td colspan="4" class="gt_sourcenote"><strong>Type</strong>: obsCov = Observation Level Covariates, siteCov = Site Level Covariates, yearlySiteCov = Year Level Covariates.<br> <strong>Transformation</strong>: All numeric variables were scaled to a mean of 0 and standard deviation of 1.</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="appendix-2-model-selection-table-for-all-species-and-only-the-final-step-models" class="level3">
+<h3 class="anchored" data-anchor-id="appendix-2-model-selection-table-for-all-species-and-only-the-final-step-models">Appendix 2: Model selection table for all species and only the final step models</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div id="bffpimvlkb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bffpimvlkb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bffpimvlkb thead, #bffpimvlkb tbody, #bffpimvlkb tfoot, #bffpimvlkb tr, #bffpimvlkb td, #bffpimvlkb th {
+  border-style: none;
+}
+
+#bffpimvlkb p {
+  margin: 0;
+  padding: 0;
+}
+
+#bffpimvlkb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bffpimvlkb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bffpimvlkb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bffpimvlkb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bffpimvlkb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bffpimvlkb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bffpimvlkb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bffpimvlkb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bffpimvlkb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bffpimvlkb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bffpimvlkb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bffpimvlkb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bffpimvlkb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bffpimvlkb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bffpimvlkb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bffpimvlkb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bffpimvlkb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bffpimvlkb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bffpimvlkb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bffpimvlkb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bffpimvlkb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bffpimvlkb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bffpimvlkb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bffpimvlkb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bffpimvlkb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bffpimvlkb .gt_left {
+  text-align: left;
+}
+
+#bffpimvlkb .gt_center {
+  text-align: center;
+}
+
+#bffpimvlkb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bffpimvlkb .gt_font_normal {
+  font-weight: normal;
+}
+
+#bffpimvlkb .gt_font_bold {
+  font-weight: bold;
+}
+
+#bffpimvlkb .gt_font_italic {
+  font-style: italic;
+}
+
+#bffpimvlkb .gt_super {
+  font-size: 65%;
+}
+
+#bffpimvlkb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bffpimvlkb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bffpimvlkb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bffpimvlkb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bffpimvlkb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bffpimvlkb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bffpimvlkb .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#bffpimvlkb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bffpimvlkb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3825,23 +4456,23 @@ TREM = Brown Trembler.</span></span></td>
 <h3 class="anchored" data-anchor-id="appendix-3.1-model-comparison-tables-for-all-species-and-all-steps---version-sort-by-modelling-step">Appendix 3.1: Model Comparison Tables for All Species and All Steps - Version sort by modelling step</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="tyothtgivu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tyothtgivu table {
+<div id="uboidqvvnh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uboidqvvnh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tyothtgivu thead, #tyothtgivu tbody, #tyothtgivu tfoot, #tyothtgivu tr, #tyothtgivu td, #tyothtgivu th {
+#uboidqvvnh thead, #uboidqvvnh tbody, #uboidqvvnh tfoot, #uboidqvvnh tr, #uboidqvvnh td, #uboidqvvnh th {
   border-style: none;
 }
 
-#tyothtgivu p {
+#uboidqvvnh p {
   margin: 0;
   padding: 0;
 }
 
-#tyothtgivu .gt_table {
+#uboidqvvnh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3867,12 +4498,12 @@ TREM = Brown Trembler.</span></span></td>
   border-left-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_caption {
+#uboidqvvnh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tyothtgivu .gt_title {
+#uboidqvvnh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3884,7 +4515,7 @@ TREM = Brown Trembler.</span></span></td>
   border-bottom-width: 0;
 }
 
-#tyothtgivu .gt_subtitle {
+#uboidqvvnh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3896,7 +4527,7 @@ TREM = Brown Trembler.</span></span></td>
   border-top-width: 0;
 }
 
-#tyothtgivu .gt_heading {
+#uboidqvvnh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3908,13 +4539,13 @@ TREM = Brown Trembler.</span></span></td>
   border-right-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_bottom_border {
+#uboidqvvnh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_col_headings {
+#uboidqvvnh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3929,7 +4560,7 @@ TREM = Brown Trembler.</span></span></td>
   border-right-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_col_heading {
+#uboidqvvnh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3949,7 +4580,7 @@ TREM = Brown Trembler.</span></span></td>
   overflow-x: hidden;
 }
 
-#tyothtgivu .gt_column_spanner_outer {
+#uboidqvvnh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3961,15 +4592,15 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 4px;
 }
 
-#tyothtgivu .gt_column_spanner_outer:first-child {
+#uboidqvvnh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tyothtgivu .gt_column_spanner_outer:last-child {
+#uboidqvvnh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tyothtgivu .gt_column_spanner {
+#uboidqvvnh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3981,11 +4612,11 @@ TREM = Brown Trembler.</span></span></td>
   width: 100%;
 }
 
-#tyothtgivu .gt_spanner_row {
+#uboidqvvnh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tyothtgivu .gt_group_heading {
+#uboidqvvnh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4011,7 +4642,7 @@ TREM = Brown Trembler.</span></span></td>
   text-align: left;
 }
 
-#tyothtgivu .gt_empty_group_heading {
+#uboidqvvnh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4026,15 +4657,15 @@ TREM = Brown Trembler.</span></span></td>
   vertical-align: middle;
 }
 
-#tyothtgivu .gt_from_md > :first-child {
+#uboidqvvnh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tyothtgivu .gt_from_md > :last-child {
+#uboidqvvnh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tyothtgivu .gt_row {
+#uboidqvvnh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4053,7 +4684,7 @@ TREM = Brown Trembler.</span></span></td>
   overflow-x: hidden;
 }
 
-#tyothtgivu .gt_stub {
+#uboidqvvnh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4066,7 +4697,7 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#tyothtgivu .gt_stub_row_group {
+#uboidqvvnh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4080,15 +4711,15 @@ TREM = Brown Trembler.</span></span></td>
   vertical-align: top;
 }
 
-#tyothtgivu .gt_row_group_first td {
+#uboidqvvnh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tyothtgivu .gt_row_group_first th {
+#uboidqvvnh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tyothtgivu .gt_summary_row {
+#uboidqvvnh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4098,16 +4729,16 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#tyothtgivu .gt_first_summary_row {
+#uboidqvvnh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_first_summary_row.thick {
+#uboidqvvnh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tyothtgivu .gt_last_summary_row {
+#uboidqvvnh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4117,7 +4748,7 @@ TREM = Brown Trembler.</span></span></td>
   border-bottom-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_grand_summary_row {
+#uboidqvvnh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4127,7 +4758,7 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#tyothtgivu .gt_first_grand_summary_row {
+#uboidqvvnh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4137,7 +4768,7 @@ TREM = Brown Trembler.</span></span></td>
   border-top-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_last_grand_summary_row_top {
+#uboidqvvnh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4147,11 +4778,11 @@ TREM = Brown Trembler.</span></span></td>
   border-bottom-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_striped {
+#uboidqvvnh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tyothtgivu .gt_table_body {
+#uboidqvvnh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4160,7 +4791,7 @@ TREM = Brown Trembler.</span></span></td>
   border-bottom-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_footnotes {
+#uboidqvvnh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4174,7 +4805,7 @@ TREM = Brown Trembler.</span></span></td>
   border-right-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_footnote {
+#uboidqvvnh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4183,7 +4814,7 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#tyothtgivu .gt_sourcenotes {
+#uboidqvvnh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4197,7 +4828,7 @@ TREM = Brown Trembler.</span></span></td>
   border-right-color: #D3D3D3;
 }
 
-#tyothtgivu .gt_sourcenote {
+#uboidqvvnh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4205,72 +4836,72 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#tyothtgivu .gt_left {
+#uboidqvvnh .gt_left {
   text-align: left;
 }
 
-#tyothtgivu .gt_center {
+#uboidqvvnh .gt_center {
   text-align: center;
 }
 
-#tyothtgivu .gt_right {
+#uboidqvvnh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tyothtgivu .gt_font_normal {
+#uboidqvvnh .gt_font_normal {
   font-weight: normal;
 }
 
-#tyothtgivu .gt_font_bold {
+#uboidqvvnh .gt_font_bold {
   font-weight: bold;
 }
 
-#tyothtgivu .gt_font_italic {
+#uboidqvvnh .gt_font_italic {
   font-style: italic;
 }
 
-#tyothtgivu .gt_super {
+#uboidqvvnh .gt_super {
   font-size: 65%;
 }
 
-#tyothtgivu .gt_footnote_marks {
+#uboidqvvnh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tyothtgivu .gt_asterisk {
+#uboidqvvnh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tyothtgivu .gt_indent_1 {
+#uboidqvvnh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tyothtgivu .gt_indent_2 {
+#uboidqvvnh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tyothtgivu .gt_indent_3 {
+#uboidqvvnh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tyothtgivu .gt_indent_4 {
+#uboidqvvnh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tyothtgivu .gt_indent_5 {
+#uboidqvvnh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tyothtgivu .katex-display {
+#uboidqvvnh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tyothtgivu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uboidqvvnh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -8738,23 +9369,23 @@ TREM = Brown Trembler.</span></span></td>
 <h3 class="anchored" data-anchor-id="appendix-3.2-model-comparison-tables-for-all-species-and-all-steps---version-pooled-over-modelling-steps">Appendix 3.2: Model Comparison Tables for All Species and All Steps - Version pooled over modelling steps</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qvvnhwjgmj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qvvnhwjgmj table {
+<div id="mtfnwgeqdx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mtfnwgeqdx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qvvnhwjgmj thead, #qvvnhwjgmj tbody, #qvvnhwjgmj tfoot, #qvvnhwjgmj tr, #qvvnhwjgmj td, #qvvnhwjgmj th {
+#mtfnwgeqdx thead, #mtfnwgeqdx tbody, #mtfnwgeqdx tfoot, #mtfnwgeqdx tr, #mtfnwgeqdx td, #mtfnwgeqdx th {
   border-style: none;
 }
 
-#qvvnhwjgmj p {
+#mtfnwgeqdx p {
   margin: 0;
   padding: 0;
 }
 
-#qvvnhwjgmj .gt_table {
+#mtfnwgeqdx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -8780,12 +9411,12 @@ TREM = Brown Trembler.</span></span></td>
   border-left-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_caption {
+#mtfnwgeqdx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qvvnhwjgmj .gt_title {
+#mtfnwgeqdx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -8797,7 +9428,7 @@ TREM = Brown Trembler.</span></span></td>
   border-bottom-width: 0;
 }
 
-#qvvnhwjgmj .gt_subtitle {
+#mtfnwgeqdx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8809,7 +9440,7 @@ TREM = Brown Trembler.</span></span></td>
   border-top-width: 0;
 }
 
-#qvvnhwjgmj .gt_heading {
+#mtfnwgeqdx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -8821,13 +9452,13 @@ TREM = Brown Trembler.</span></span></td>
   border-right-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_bottom_border {
+#mtfnwgeqdx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_col_headings {
+#mtfnwgeqdx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8842,7 +9473,7 @@ TREM = Brown Trembler.</span></span></td>
   border-right-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_col_heading {
+#mtfnwgeqdx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8862,7 +9493,7 @@ TREM = Brown Trembler.</span></span></td>
   overflow-x: hidden;
 }
 
-#qvvnhwjgmj .gt_column_spanner_outer {
+#mtfnwgeqdx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8874,15 +9505,15 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 4px;
 }
 
-#qvvnhwjgmj .gt_column_spanner_outer:first-child {
+#mtfnwgeqdx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qvvnhwjgmj .gt_column_spanner_outer:last-child {
+#mtfnwgeqdx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qvvnhwjgmj .gt_column_spanner {
+#mtfnwgeqdx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8894,11 +9525,11 @@ TREM = Brown Trembler.</span></span></td>
   width: 100%;
 }
 
-#qvvnhwjgmj .gt_spanner_row {
+#mtfnwgeqdx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qvvnhwjgmj .gt_group_heading {
+#mtfnwgeqdx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8924,7 +9555,7 @@ TREM = Brown Trembler.</span></span></td>
   text-align: left;
 }
 
-#qvvnhwjgmj .gt_empty_group_heading {
+#mtfnwgeqdx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8939,15 +9570,15 @@ TREM = Brown Trembler.</span></span></td>
   vertical-align: middle;
 }
 
-#qvvnhwjgmj .gt_from_md > :first-child {
+#mtfnwgeqdx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qvvnhwjgmj .gt_from_md > :last-child {
+#mtfnwgeqdx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qvvnhwjgmj .gt_row {
+#mtfnwgeqdx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8966,7 +9597,7 @@ TREM = Brown Trembler.</span></span></td>
   overflow-x: hidden;
 }
 
-#qvvnhwjgmj .gt_stub {
+#mtfnwgeqdx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8979,7 +9610,7 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#qvvnhwjgmj .gt_stub_row_group {
+#mtfnwgeqdx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8993,15 +9624,15 @@ TREM = Brown Trembler.</span></span></td>
   vertical-align: top;
 }
 
-#qvvnhwjgmj .gt_row_group_first td {
+#mtfnwgeqdx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qvvnhwjgmj .gt_row_group_first th {
+#mtfnwgeqdx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qvvnhwjgmj .gt_summary_row {
+#mtfnwgeqdx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9011,16 +9642,16 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#qvvnhwjgmj .gt_first_summary_row {
+#mtfnwgeqdx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_first_summary_row.thick {
+#mtfnwgeqdx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qvvnhwjgmj .gt_last_summary_row {
+#mtfnwgeqdx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9030,7 +9661,7 @@ TREM = Brown Trembler.</span></span></td>
   border-bottom-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_grand_summary_row {
+#mtfnwgeqdx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9040,7 +9671,7 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#qvvnhwjgmj .gt_first_grand_summary_row {
+#mtfnwgeqdx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9050,7 +9681,7 @@ TREM = Brown Trembler.</span></span></td>
   border-top-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_last_grand_summary_row_top {
+#mtfnwgeqdx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9060,11 +9691,11 @@ TREM = Brown Trembler.</span></span></td>
   border-bottom-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_striped {
+#mtfnwgeqdx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qvvnhwjgmj .gt_table_body {
+#mtfnwgeqdx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9073,7 +9704,7 @@ TREM = Brown Trembler.</span></span></td>
   border-bottom-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_footnotes {
+#mtfnwgeqdx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9087,7 +9718,7 @@ TREM = Brown Trembler.</span></span></td>
   border-right-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_footnote {
+#mtfnwgeqdx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -9096,7 +9727,7 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#qvvnhwjgmj .gt_sourcenotes {
+#mtfnwgeqdx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9110,7 +9741,7 @@ TREM = Brown Trembler.</span></span></td>
   border-right-color: #D3D3D3;
 }
 
-#qvvnhwjgmj .gt_sourcenote {
+#mtfnwgeqdx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -9118,72 +9749,72 @@ TREM = Brown Trembler.</span></span></td>
   padding-right: 5px;
 }
 
-#qvvnhwjgmj .gt_left {
+#mtfnwgeqdx .gt_left {
   text-align: left;
 }
 
-#qvvnhwjgmj .gt_center {
+#mtfnwgeqdx .gt_center {
   text-align: center;
 }
 
-#qvvnhwjgmj .gt_right {
+#mtfnwgeqdx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qvvnhwjgmj .gt_font_normal {
+#mtfnwgeqdx .gt_font_normal {
   font-weight: normal;
 }
 
-#qvvnhwjgmj .gt_font_bold {
+#mtfnwgeqdx .gt_font_bold {
   font-weight: bold;
 }
 
-#qvvnhwjgmj .gt_font_italic {
+#mtfnwgeqdx .gt_font_italic {
   font-style: italic;
 }
 
-#qvvnhwjgmj .gt_super {
+#mtfnwgeqdx .gt_super {
   font-size: 65%;
 }
 
-#qvvnhwjgmj .gt_footnote_marks {
+#mtfnwgeqdx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qvvnhwjgmj .gt_asterisk {
+#mtfnwgeqdx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qvvnhwjgmj .gt_indent_1 {
+#mtfnwgeqdx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qvvnhwjgmj .gt_indent_2 {
+#mtfnwgeqdx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qvvnhwjgmj .gt_indent_3 {
+#mtfnwgeqdx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qvvnhwjgmj .gt_indent_4 {
+#mtfnwgeqdx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qvvnhwjgmj .gt_indent_5 {
+#mtfnwgeqdx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qvvnhwjgmj .katex-display {
+#mtfnwgeqdx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qvvnhwjgmj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mtfnwgeqdx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
