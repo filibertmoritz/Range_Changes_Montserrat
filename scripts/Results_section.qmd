@@ -356,7 +356,7 @@ plot_colext <- pred_colext %>%
     legend.text = element_text(size = 10), 
     strip.text = element_text(size = 10))
 print(plot_colext)
-ggsave(filename = 'colext_figure.png', plot = plot_colext, path = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots', width = 8, height = 6)
+ggsave(filename = 'colext_figure.png', plot = plot_colext, path = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots', width = 8, height = 6, dpi = 1000)
 ```
 
 ## Supplementary
@@ -627,5 +627,5 @@ plot_occu <- occu %>%
   theme_test() +
   theme(strip.text = element_text(size = 10))
 print(plot_occu)
-ggsave(filename = 'occu_figure.png', plot = plot_occu, path = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots', width = 7, height = 9)
+ggsave(filename = 'occu_figure.png', plot = plot_occu, path = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots', width = 7, height = 9, dpi = 1000)
 ```
