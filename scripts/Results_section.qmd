@@ -33,6 +33,7 @@ library(unmarked)
 library(quarto)
 library(gt)
 library(rlang)
+library(terra)
 
 SPECIES <- c("MTOR","FOTH","BRQD","TREM","ACHU","PTCA","PETH","GTCA","SBTH","SNPI", "CAEL","BANA")
 species_names <- c("Montserrat Oriole","Forest Thrush","Bridled Quail-Dove","Brown Trembler","Antillean Crested Hummingbird","Purple-Throated Carib","Pearly-Eyed Thrasher","Green-Throated Carib","Scaly-Breasted Thrasher","Scaly-Naped Pigeon", "Caribbean Eleania","Banaquit")
@@ -73,6 +74,7 @@ gof_list <- list()
 for(i in 1:length(SPECIES)){
   gof_list[i] <- readRDS(file = sprintf('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/data/GOF/%s_gof_pb.rds', SPECIES[i]))
   names(gof_list)[i] <- SPECIES[i]}
+
 ```
 
 ### Overview and Uncertainty
@@ -629,3 +631,111 @@ plot_occu <- occu %>%
 print(plot_occu)
 ggsave(filename = 'occu_figure.png', plot = plot_occu, path = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots', width = 7, height = 9, dpi = 1000)
 ```
+
+### Appendix: Detection probabilities trajectories
+
+
+```{r}
+j <- data.frame(year = unique(best_model@data@obsCovs$year), 
+           Year = 2011:2024)
+det.plot <- data.frame(Predicted = numeric(), SE = numeric(), lower = numeric(), upper = numeric(), year = numeric(), Year = numeric(), Species = character())
+for(i in 1:length(SPECIES)){
+  best_model <- models[[SPECIES[i]]]
+  det.pred <- predict(best_model, type = "det") 
+  det.pred <- cbind(det.pred, year = best_model@data@obsCovs$year)
+  det.pred <- det.pred %>% left_join(j, join_by(year)) %>% mutate(Species = SPECIES[i])
+  det.plot <- rbind(det.plot, det.pred)
+} 
+
+det.plot <- det.plot %>% rename(SpeciesCode = Species) %>%
+  left_join(species %>% select(SpeciesCode, Species), by = join_by(SpeciesCode)) %>%
+  mutate(species_names = str_to_title(Species)) %>% select(-SpeciesCode)
+
+
+plot_det <- det.plot %>% drop_na() %>% # drop all NA to avoid issues with mean etc
+  group_by(species_names, Year) %>%
+  summarise(Detection_mean = mean(Predicted, na.rm = T), 
+            se_mean = sqrt(sum(SE^2)) / n(),
+            upper = Detection_mean + (1.96*sd(Predicted)/sqrt(n())), 
+            lower = Detection_mean - (1.96*sd(Predicted)/sqrt(n()))) %>% 
+  filter(!Year == 2020) %>%
+  ggplot() +
+  geom_point(mapping = aes(x = Year, y = Detection_mean), col = 'firebrick', size = 1.7, position = position_dodge(width = 0)) +
+  geom_errorbar(mapping = aes(ymin = lower, ymax = upper, x = Year), 
+                width = 0.4, size = 0.5, position = position_dodge(width = 0)) +
+  facet_wrap(~species_names, nrow = 4) +
+  scale_y_continuous(limits = c(0, 1.1), breaks=seq(0,1,0.2),labels=seq(0,1,0.2))  +
+  scale_x_continuous(limits = c(2010, 2025), breaks=seq(2011,2025,4),labels=seq(2011,2025,4)) +
+  labs(y = 'Detection Probability') +
+  theme_test() +
+  theme(strip.text = element_text(size = 10))
+plot_det
+
+ggsave(filename = 'det_figure.png', plot = plot_det, path = 'C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots', width = 7, height = 9, dpi = 1000)
+
+# correlation plot
+library(psych)
+psych::pairs.panels(siteCov %>% filter(!Point %in% c(99,76)))
+```
+
+### Temperature trajectory
+
+```{r, warning=}
+# load data 
+data <- terra::rast('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/data/climate.data.montserrat.grib') # raster data from ERA5, DOI: 10.24381/cds.f17050d7
+mt <- terra::vect('C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/data/geoBoundaries-MSR-ADM0-edited.shp') # shp file Montserrat boundary
+
+# ensure correct coordinate reference system 
+mt <- terra::project(x =mt, y = data)
+
+# extract data from raster using Montserrat boundary, perform data cleaning afterwards
+temp.dat <- extract(data, mt) %>%
+  pivot_longer(-ID, names_to = "date", values_to = "temp") %>% 
+  mutate(date = time(data), 
+         temp = temp - 273.15) %>% 
+  select(-ID)
+
+# fit linear model over study period using date as decimal number for trend
+summary(lm(temp~decimal_date(date), data = temp.dat %>% filter(year(date) >= 2011,year(date) <= 2024)))
+
+# plot temperature over study period
+plot.temp.study <- temp.dat %>% filter(year(date) >= 2011, year(date) <= 2024) %>%
+  ggplot(mapping = aes(x = decimal_date(date), y = temp)) + 
+  geom_line() + 
+  geom_smooth(method = 'lm', formula = y~x) +
+  labs(y="Temperature (°C)", x="Year") +
+  scale_x_continuous(breaks=seq(2011,2025,2)) +
+  scale_y_continuous(breaks=seq(20,28.5,0.5)) +
+  theme(panel.background=element_rect(fill="white", colour="black"), 
+        axis.text=element_text(size=10, color="black"), 
+        axis.title=element_text(size=14), 
+        strip.text.x=element_text(size=12, color="black"), 
+        strip.background=element_rect(fill="white", colour="black"), 
+        panel.grid.minor = element_blank(), 
+        panel.border = element_blank())
+
+# plot long term temperature trajectory 
+plot.temp.long <- temp.dat %>% # filter(year(date) >= 2011, year(date) <= 2024) %>%
+  ggplot(mapping = aes(x = decimal_date(date), y = temp)) + 
+  geom_line() + 
+  geom_smooth(method = 'loess', span = 0.5, formula = y~x) +
+  labs(y="Temperature (°C)", x="Year") +
+  scale_x_continuous(breaks=seq(1940,2025,20)) +
+  scale_y_continuous(breaks=seq(18,28.5,0.5)) +
+  theme(panel.background=element_rect(fill="white", colour="black"), 
+        axis.text=element_text(size=10, color="black"), 
+        axis.title=element_text(size=14), 
+        strip.text.x=element_text(size=12, color="black"), 
+        strip.background=element_rect(fill="white", colour="black"), 
+        panel.grid.minor = element_blank(), 
+        panel.border = element_blank())
+
+
+library(ggpubr)
+plot.temp <- ggarrange(plot.temp.long, plot.temp.study, labels = c("a)", "b)"))
+plot.temp
+ggsave(filename = 'temp_figure.png',path ='C:/Users/filib/Documents/Praktika/Sempach/Montserrat/Range_Changes_Montserrat/output/plots', plot = plot.temp, dpi = 1000, width = 10, height = 5)
+
+
+```
+
